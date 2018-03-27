@@ -7,16 +7,87 @@
 //
 
 #import "AISGiftCardViewController.h"
+#import "AISUserManager.h"
+#import "AISCardCell.h"
+#import "AISPaymentViewController.h"
 
-@interface AISGiftCardViewController ()
-
+@interface AISGiftCardViewController ()<UITextFieldDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@property (nonatomic,weak)IBOutlet UITextField *nameField;
+@property (nonatomic,weak)IBOutlet UITextField *amountField;
+@property (nonatomic,weak)IBOutlet UICollectionView *cardCollectionView;
 @end
 
 @implementation AISGiftCardViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self setUpUI];
+    [self setUpDatasource];
+}
+
+- (void)setUpUI {
+    
+    UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithTitle:@"Next"
+                                                             style:UIBarButtonItemStylePlain target:self action:@selector(moveToPayment)];
+    self.navigationItem.rightBarButtonItem = nextBtn;
+    
+    self.nameField.text = [AISUserManager sharedInstance].selectedContact.fullName;
+    
+    UICollectionViewFlowLayout *cardCellViewLayout = [[UICollectionViewFlowLayout alloc] init];
+    cardCellViewLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    cardCellViewLayout.minimumLineSpacing = 5.0f;
+    cardCellViewLayout.minimumInteritemSpacing = 5.0f;
+    
+    self.cardCollectionView.collectionViewLayout = cardCellViewLayout;
+    self.cardCollectionView.delegate = self;
+    self.cardCollectionView.dataSource = self;
+    self.cardCollectionView.showsVerticalScrollIndicator = YES;
+    self.cardCollectionView.backgroundColor = [UIColor clearColor];
+    
+    [self.cardCollectionView reloadData];
+
+}
+
+- (void)setUpDatasource {
+    
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat width = (collectionView.frame.size.width/2)-(5.0 * 3);
+    CGFloat height = (3*width)/4.0;
+    return CGSizeMake(width,height);
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section {
+    return 10;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    AISCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AISCardCell" forIndexPath:indexPath];
+    cell.check.hidden = YES;
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    AISCardCell *cell = (AISCardCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.check.hidden = NO;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    AISCardCell *cell = (AISCardCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.check.hidden = YES;
+}
+
+- (void)moveToPayment {
+    AISPaymentViewController *con = [self.storyboard instantiateViewControllerWithIdentifier:@"AISPaymentViewController"];
+    [self.navigationController pushViewController:con animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

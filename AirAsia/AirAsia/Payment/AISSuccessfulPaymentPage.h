@@ -1,5 +1,5 @@
 //
-//  AISGiftCardViewController.h
+//  AISSuccessfulPaymentPage.h
 //  AirAsia
 //
 //  Created by ATS on 3/27/18.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AISContact.h"
 
-@interface AISGiftCardViewController : UIViewController
+@interface AISSuccessfulPaymentPage : UIViewController
 
 @end

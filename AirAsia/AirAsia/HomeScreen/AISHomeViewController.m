@@ -11,16 +11,19 @@
 #import "AISUserView.h"
 #import "AISSearchTableViewController.h"
 #import "AISContact.h"
+#import "AISCardCell.h"
+#import "AISGiftCardViewController.h"
 
 #define MESSAGE_PLACEHOLDER @"Enter your Message"
 
-@interface AISHomeViewController ()<UITextFieldDelegate,UITextViewDelegate,AISSearchTableViewControllerDelegate>
+@interface AISHomeViewController ()<UITextFieldDelegate,UITextViewDelegate,AISSearchTableViewControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property(nonatomic,weak)IBOutlet AISUserView *userView;
 @property(nonatomic,weak)IBOutlet UITextField *contactTextField;
 @property(nonatomic,weak)IBOutlet UITextView *messageTextView;
 @property(nonatomic,weak)IBOutlet UIButton *contactPickBtn;
 @property(nonatomic,weak)IBOutlet UIButton *sendCardButton;
 @property(nonatomic,weak)IBOutlet UIButton *createCardButton;
+@property(nonatomic,weak)IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic,strong)AISContact *selectedContact;
 
@@ -30,7 +33,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self setUpUI];
     // Do any additional setup after loading the view.
 }
@@ -58,6 +60,7 @@
     
     self.sendCardButton.layer.cornerRadius = 7;
     self.sendCardButton.layer.masksToBounds = YES;
+    [self.sendCardButton addTarget:self action:@selector(openCardView) forControlEvents:UIControlEventTouchUpInside];
     
     self.messageTextView.layer.borderWidth = 1;
     self.messageTextView.layer.borderColor = [UIColor redColor].CGColor;
@@ -66,6 +69,24 @@
     
     self.createCardButton.layer.cornerRadius = 12;
     self.createCardButton.layer.masksToBounds = YES;
+    
+    [self setUpCollectionView];
+    
+    [self.collectionView reloadData];
+    
+}
+
+- (void)setUpCollectionView {
+    
+    UICollectionViewFlowLayout *cardCellViewLayout = [[UICollectionViewFlowLayout alloc] init];
+    cardCellViewLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    cardCellViewLayout.minimumLineSpacing = 5.0f;
+    cardCellViewLayout.minimumInteritemSpacing = 5.0f;
+    
+    self.collectionView.collectionViewLayout = cardCellViewLayout;
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    self.collectionView.showsHorizontalScrollIndicator = YES;
 }
 
 - (void)openContactPicker {
@@ -73,6 +94,45 @@
     con.searchString = self.contactTextField.text;
     con.delegate = self;
     [self.navigationController pushViewController:con animated:YES];
+}
+
+- (void)openCardView {
+    AISGiftCardViewController *con = [self.storyboard instantiateViewControllerWithIdentifier:@"AISGiftCardViewController"];
+    [self.navigationController pushViewController:con animated:YES];
+}
+
+#pragma mark - Collection View delegate
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat height = collectionView.frame.size.height - 10;
+    CGFloat width = height*1.5;
+    return CGSizeMake(width,height);
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section {
+        return 5;
+    
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    AISCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyOwnCards" forIndexPath:indexPath];
+    cell.check.hidden = YES;
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    AISCardCell *cell = (AISCardCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.check.hidden = NO;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    AISCardCell *cell = (AISCardCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.check.hidden = YES;
 }
 
 #pragma mark - TextField Delegate
@@ -111,6 +171,7 @@
 - (void)selectedContact:(AISContact *)contact {
     self.selectedContact = contact;
     self.contactTextField.text = contact.fullName;
+    [[AISUserManager sharedInstance] setSelectedContact:contact];
 }
 
 - (void)didReceiveMemoryWarning {

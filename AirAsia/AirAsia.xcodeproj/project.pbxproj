@@ -20,6 +20,8 @@
 		2A0D19272069F67B00C4DB98 /* AISContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D19262069F67B00C4DB98 /* AISContact.m */; };
 		2A0D192A206A18FB00C4DB98 /* AISGiftCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D1929206A18FB00C4DB98 /* AISGiftCardViewController.m */; };
 		2A0D192D206A195100C4DB98 /* AISPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D192C206A195100C4DB98 /* AISPaymentViewController.m */; };
+		2A0D1931206A236600C4DB98 /* AISCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D1930206A236600C4DB98 /* AISCardCell.m */; };
+		2A0D1934206A634700C4DB98 /* AISSuccessfulPaymentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D1933206A634700C4DB98 /* AISSuccessfulPaymentPage.m */; };
 		B144B80420538E2000354BEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B144B80320538E2000354BEE /* AppDelegate.m */; };
 		B144B80A20538E2000354BEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B144B80820538E2000354BEE /* Main.storyboard */; };
 		B144B80D20538E2000354BEE /* AirAsia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B144B80B20538E2000354BEE /* AirAsia.xcdatamodeld */; };
@@ -57,6 +59,10 @@
 		2A0D1929206A18FB00C4DB98 /* AISGiftCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISGiftCardViewController.m; sourceTree = "<group>"; };
 		2A0D192B206A195100C4DB98 /* AISPaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISPaymentViewController.h; sourceTree = "<group>"; };
 		2A0D192C206A195100C4DB98 /* AISPaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISPaymentViewController.m; sourceTree = "<group>"; };
+		2A0D192F206A236600C4DB98 /* AISCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISCardCell.h; sourceTree = "<group>"; };
+		2A0D1930206A236600C4DB98 /* AISCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISCardCell.m; sourceTree = "<group>"; };
+		2A0D1932206A634700C4DB98 /* AISSuccessfulPaymentPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISSuccessfulPaymentPage.h; sourceTree = "<group>"; };
+		2A0D1933206A634700C4DB98 /* AISSuccessfulPaymentPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISSuccessfulPaymentPage.m; sourceTree = "<group>"; };
 		B144B7FF20538E2000354BEE /* AirAsia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirAsia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B144B80220538E2000354BEE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B144B80320538E2000354BEE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -145,6 +151,7 @@
 		2A0D191F20695F5700C4DB98 /* GiftCard */ = {
 			isa = PBXGroup;
 			children = (
+				2A0D192E206A233900C4DB98 /* Cell */,
 				2A0D1928206A18FB00C4DB98 /* AISGiftCardViewController.h */,
 				2A0D1929206A18FB00C4DB98 /* AISGiftCardViewController.m */,
 			);
@@ -156,6 +163,8 @@
 			children = (
 				2A0D192B206A195100C4DB98 /* AISPaymentViewController.h */,
 				2A0D192C206A195100C4DB98 /* AISPaymentViewController.m */,
+				2A0D1932206A634700C4DB98 /* AISSuccessfulPaymentPage.h */,
+				2A0D1933206A634700C4DB98 /* AISSuccessfulPaymentPage.m */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -167,6 +176,15 @@
 				2A0D19262069F67B00C4DB98 /* AISContact.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2A0D192E206A233900C4DB98 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2A0D192F206A236600C4DB98 /* AISCardCell.h */,
+				2A0D1930206A236600C4DB98 /* AISCardCell.m */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		B144B7F620538E2000354BEE = {
@@ -306,6 +324,7 @@
 			files = (
 				2A00C00D20654A55005302D8 /* AISUIUtility.m in Sources */,
 				2A0D19232069D3A400C4DB98 /* AISContactUtility.m in Sources */,
+				2A0D1934206A634700C4DB98 /* AISSuccessfulPaymentPage.m in Sources */,
 				2A00BFF520652159005302D8 /* AISUserDetails+CoreDataClass.m in Sources */,
 				B144B81D2053994D00354BEE /* AISHomeViewController.m in Sources */,
 				2A00BFF620652159005302D8 /* AISUserDetails+CoreDataProperties.m in Sources */,
@@ -321,6 +340,7 @@
 				2A0D191E20690ECE00C4DB98 /* AISSearchTableViewController.m in Sources */,
 				2A0D191B2069020D00C4DB98 /* NSData+Dictionary.m in Sources */,
 				2A00C00820652811005302D8 /* AISCoreDataManager.m in Sources */,
+				2A0D1931206A236600C4DB98 /* AISCardCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
