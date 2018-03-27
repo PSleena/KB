@@ -13,4 +13,5 @@
 + (void)addThemeToView:(UIView *)view;
 + (void)showAlertWithMessage:(NSString *)message;
 + (void)setPlaceHolderColor:(UITextField *)textField placeHoldertext:(NSString *)text;
++ (NSDictionary *)dataFromJsonFileWithName:(NSString *)name;
 @end

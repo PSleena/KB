@@ -10,4 +10,6 @@
 
 @interface AISPaymentViewController : UIViewController
 
+@property (nonatomic)NSDictionary *voucherInfo;
+
 @end

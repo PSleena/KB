@@ -22,6 +22,19 @@
 		2A0D192D206A195100C4DB98 /* AISPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D192C206A195100C4DB98 /* AISPaymentViewController.m */; };
 		2A0D1931206A236600C4DB98 /* AISCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D1930206A236600C4DB98 /* AISCardCell.m */; };
 		2A0D1934206A634700C4DB98 /* AISSuccessfulPaymentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D1933206A634700C4DB98 /* AISSuccessfulPaymentPage.m */; };
+		B10131BD206A7ED6000BDF3C /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = B10131BC206A7ED6000BDF3C /* login.json */; };
+		B10131BF206A7F5C000BDF3C /* voucher.json in Resources */ = {isa = PBXBuildFile; fileRef = B10131BE206A7F5C000BDF3C /* voucher.json */; };
+		B10131C4206A8235000BDF3C /* AISVoucher+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B10131C2206A8235000BDF3C /* AISVoucher+CoreDataClass.m */; };
+		B10131C5206A8235000BDF3C /* AISVoucher+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B10131C3206A8235000BDF3C /* AISVoucher+CoreDataProperties.m */; };
+		B10131CF206A94DC000BDF3C /* AISFilePathUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = B10131CE206A94DC000BDF3C /* AISFilePathUtility.m */; };
+		B10131D6206AA602000BDF3C /* UIImage+MDQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = B10131D5206AA602000BDF3C /* UIImage+MDQRCode.m */; };
+		B10131E5206AA614000BDF3C /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = B10131D8206AA613000BDF3C /* split.c */; };
+		B10131E6206AA614000BDF3C /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = B10131DD206AA613000BDF3C /* qrspec.c */; };
+		B10131E7206AA614000BDF3C /* qrencode.c in Sources */ = {isa = PBXBuildFile; fileRef = B10131DE206AA613000BDF3C /* qrencode.c */; };
+		B10131E8206AA614000BDF3C /* bitstream.c in Sources */ = {isa = PBXBuildFile; fileRef = B10131E0206AA613000BDF3C /* bitstream.c */; };
+		B10131E9206AA614000BDF3C /* mask.c in Sources */ = {isa = PBXBuildFile; fileRef = B10131E1206AA613000BDF3C /* mask.c */; };
+		B10131EA206AA614000BDF3C /* qrinput.c in Sources */ = {isa = PBXBuildFile; fileRef = B10131E2206AA613000BDF3C /* qrinput.c */; };
+		B10131EB206AA614000BDF3C /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = B10131E4206AA614000BDF3C /* rscode.c */; };
 		B144B80420538E2000354BEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B144B80320538E2000354BEE /* AppDelegate.m */; };
 		B144B80A20538E2000354BEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B144B80820538E2000354BEE /* Main.storyboard */; };
 		B144B80D20538E2000354BEE /* AirAsia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B144B80B20538E2000354BEE /* AirAsia.xcdatamodeld */; };
@@ -30,6 +43,7 @@
 		B144B81520538E2000354BEE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B144B81420538E2000354BEE /* main.m */; };
 		B144B81D2053994D00354BEE /* AISHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B144B81C2053994D00354BEE /* AISHomeViewController.m */; };
 		B144B822205399DD00354BEE /* AISUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B144B821205399DD00354BEE /* AISUserManager.m */; };
+		B29C56D246EAA104AEA5F360 /* Pods_AirAsia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A6A2C5F0B55D98E66298E5 /* Pods_AirAsia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +77,31 @@
 		2A0D1930206A236600C4DB98 /* AISCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISCardCell.m; sourceTree = "<group>"; };
 		2A0D1932206A634700C4DB98 /* AISSuccessfulPaymentPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISSuccessfulPaymentPage.h; sourceTree = "<group>"; };
 		2A0D1933206A634700C4DB98 /* AISSuccessfulPaymentPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISSuccessfulPaymentPage.m; sourceTree = "<group>"; };
+		B10131BC206A7ED6000BDF3C /* login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
+		B10131BE206A7F5C000BDF3C /* voucher.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = voucher.json; sourceTree = "<group>"; };
+		B10131C0206A8235000BDF3C /* AISVoucher+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AISVoucher+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B10131C1206A8235000BDF3C /* AISVoucher+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AISVoucher+CoreDataClass.h"; sourceTree = "<group>"; };
+		B10131C2206A8235000BDF3C /* AISVoucher+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AISVoucher+CoreDataClass.m"; sourceTree = "<group>"; };
+		B10131C3206A8235000BDF3C /* AISVoucher+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AISVoucher+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B10131CD206A94DC000BDF3C /* AISFilePathUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISFilePathUtility.h; sourceTree = "<group>"; };
+		B10131CE206A94DC000BDF3C /* AISFilePathUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISFilePathUtility.m; sourceTree = "<group>"; };
+		B10131D0206A9DC4000BDF3C /* AirAsia-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AirAsia-Bridging-Header.h"; sourceTree = "<group>"; };
+		B10131D4206AA602000BDF3C /* UIImage+MDQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MDQRCode.h"; sourceTree = "<group>"; };
+		B10131D5206AA602000BDF3C /* UIImage+MDQRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MDQRCode.m"; sourceTree = "<group>"; };
+		B10131D7206AA613000BDF3C /* qrencode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = qrencode.h; path = libqrencode/qrencode.h; sourceTree = "<group>"; };
+		B10131D8206AA613000BDF3C /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = split.c; path = libqrencode/split.c; sourceTree = "<group>"; };
+		B10131D9206AA613000BDF3C /* qrinput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = qrinput.h; path = libqrencode/qrinput.h; sourceTree = "<group>"; };
+		B10131DA206AA613000BDF3C /* mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mask.h; path = libqrencode/mask.h; sourceTree = "<group>"; };
+		B10131DB206AA613000BDF3C /* qrspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = qrspec.h; path = libqrencode/qrspec.h; sourceTree = "<group>"; };
+		B10131DC206AA613000BDF3C /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rscode.h; path = libqrencode/rscode.h; sourceTree = "<group>"; };
+		B10131DD206AA613000BDF3C /* qrspec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = qrspec.c; path = libqrencode/qrspec.c; sourceTree = "<group>"; };
+		B10131DE206AA613000BDF3C /* qrencode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = qrencode.c; path = libqrencode/qrencode.c; sourceTree = "<group>"; };
+		B10131DF206AA613000BDF3C /* bitstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bitstream.h; path = libqrencode/bitstream.h; sourceTree = "<group>"; };
+		B10131E0206AA613000BDF3C /* bitstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bitstream.c; path = libqrencode/bitstream.c; sourceTree = "<group>"; };
+		B10131E1206AA613000BDF3C /* mask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mask.c; path = libqrencode/mask.c; sourceTree = "<group>"; };
+		B10131E2206AA613000BDF3C /* qrinput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = qrinput.c; path = libqrencode/qrinput.c; sourceTree = "<group>"; };
+		B10131E3206AA613000BDF3C /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = split.h; path = libqrencode/split.h; sourceTree = "<group>"; };
+		B10131E4206AA614000BDF3C /* rscode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rscode.c; path = libqrencode/rscode.c; sourceTree = "<group>"; };
 		B144B7FF20538E2000354BEE /* AirAsia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirAsia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B144B80220538E2000354BEE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B144B80320538E2000354BEE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -76,6 +115,9 @@
 		B144B81C2053994D00354BEE /* AISHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISHomeViewController.m; sourceTree = "<group>"; };
 		B144B820205399DD00354BEE /* AISUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISUserManager.h; sourceTree = "<group>"; };
 		B144B821205399DD00354BEE /* AISUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISUserManager.m; sourceTree = "<group>"; };
+		C369996788D723296B3344D6 /* Pods-AirAsia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirAsia.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirAsia/Pods-AirAsia.release.xcconfig"; sourceTree = "<group>"; };
+		D4A6A2C5F0B55D98E66298E5 /* Pods_AirAsia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirAsia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1F467DC35002E5A6AE3E90C /* Pods-AirAsia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirAsia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirAsia/Pods-AirAsia.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B29C56D246EAA104AEA5F360 /* Pods_AirAsia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +139,10 @@
 				2A00BFF220652159005302D8 /* AISUserDetails+CoreDataClass.m */,
 				2A00BFF320652159005302D8 /* AISUserDetails+CoreDataProperties.h */,
 				2A00BFF420652159005302D8 /* AISUserDetails+CoreDataProperties.m */,
+				B10131C0206A8235000BDF3C /* AISVoucher+CoreDataProperties.h */,
+				B10131C3206A8235000BDF3C /* AISVoucher+CoreDataProperties.m */,
+				B10131C1206A8235000BDF3C /* AISVoucher+CoreDataClass.h */,
+				B10131C2206A8235000BDF3C /* AISVoucher+CoreDataClass.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -135,6 +182,8 @@
 				2A0D191A2069020D00C4DB98 /* NSData+Dictionary.m */,
 				2A0D19212069D3A400C4DB98 /* AISContactUtility.h */,
 				2A0D19222069D3A400C4DB98 /* AISContactUtility.m */,
+				B10131CD206A94DC000BDF3C /* AISFilePathUtility.h */,
+				B10131CE206A94DC000BDF3C /* AISFilePathUtility.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -165,6 +214,7 @@
 				2A0D192C206A195100C4DB98 /* AISPaymentViewController.m */,
 				2A0D1932206A634700C4DB98 /* AISSuccessfulPaymentPage.h */,
 				2A0D1933206A634700C4DB98 /* AISSuccessfulPaymentPage.m */,
+				B10131D0206A9DC4000BDF3C /* AirAsia-Bridging-Header.h */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -187,11 +237,63 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		2E87E2DE013C7BB76A7CD211 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E1F467DC35002E5A6AE3E90C /* Pods-AirAsia.debug.xcconfig */,
+				C369996788D723296B3344D6 /* Pods-AirAsia.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8B71BA8E83CCAAC2880D84A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D4A6A2C5F0B55D98E66298E5 /* Pods_AirAsia.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B10131AD206A71F1000BDF3C /* Jsons */ = {
+			isa = PBXGroup;
+			children = (
+				B10131BE206A7F5C000BDF3C /* voucher.json */,
+				B10131BC206A7ED6000BDF3C /* login.json */,
+			);
+			path = Jsons;
+			sourceTree = "<group>";
+		};
+		B10131D3206AA5DA000BDF3C /* QR Code */ = {
+			isa = PBXGroup;
+			children = (
+				B10131E0206AA613000BDF3C /* bitstream.c */,
+				B10131DF206AA613000BDF3C /* bitstream.h */,
+				B10131E1206AA613000BDF3C /* mask.c */,
+				B10131DA206AA613000BDF3C /* mask.h */,
+				B10131DE206AA613000BDF3C /* qrencode.c */,
+				B10131D7206AA613000BDF3C /* qrencode.h */,
+				B10131E2206AA613000BDF3C /* qrinput.c */,
+				B10131D9206AA613000BDF3C /* qrinput.h */,
+				B10131DD206AA613000BDF3C /* qrspec.c */,
+				B10131DB206AA613000BDF3C /* qrspec.h */,
+				B10131E4206AA614000BDF3C /* rscode.c */,
+				B10131DC206AA613000BDF3C /* rscode.h */,
+				B10131D8206AA613000BDF3C /* split.c */,
+				B10131E3206AA613000BDF3C /* split.h */,
+				B10131D4206AA602000BDF3C /* UIImage+MDQRCode.h */,
+				B10131D5206AA602000BDF3C /* UIImage+MDQRCode.m */,
+			);
+			path = "QR Code";
+			sourceTree = "<group>";
+		};
 		B144B7F620538E2000354BEE = {
 			isa = PBXGroup;
 			children = (
+				B10131D3206AA5DA000BDF3C /* QR Code */,
 				B144B80120538E2000354BEE /* AirAsia */,
 				B144B80020538E2000354BEE /* Products */,
+				2E87E2DE013C7BB76A7CD211 /* Pods */,
+				8B71BA8E83CCAAC2880D84A2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -206,6 +308,7 @@
 		B144B80120538E2000354BEE /* AirAsia */ = {
 			isa = PBXGroup;
 			children = (
+				B10131AD206A71F1000BDF3C /* Jsons */,
 				2A0D192020695F6500C4DB98 /* Payment */,
 				2A0D191F20695F5700C4DB98 /* GiftCard */,
 				2A00C00A20654A27005302D8 /* Utility */,
@@ -257,9 +360,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B144B81820538E2000354BEE /* Build configuration list for PBXNativeTarget "AirAsia" */;
 			buildPhases = (
+				7442E8218D1DC28A34A1A218 /* [CP] Check Pods Manifest.lock */,
 				B144B7FB20538E2000354BEE /* Sources */,
 				B144B7FC20538E2000354BEE /* Frameworks */,
 				B144B7FD20538E2000354BEE /* Resources */,
+				D8FAEB1E65FD0EE46DCEF06A /* [CP] Embed Pods Frameworks */,
+				4E7D5B62518500319D32B7FD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,6 +387,7 @@
 				TargetAttributes = {
 					B144B7FE20538E2000354BEE = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -310,12 +417,68 @@
 			files = (
 				2A00C0142065E6FD005302D8 /* joyce-huis-292442-unsplash.jpg in Resources */,
 				B144B81220538E2000354BEE /* LaunchScreen.storyboard in Resources */,
+				B10131BF206A7F5C000BDF3C /* voucher.json in Resources */,
+				B10131BD206A7ED6000BDF3C /* login.json in Resources */,
 				B144B80F20538E2000354BEE /* Assets.xcassets in Resources */,
 				B144B80A20538E2000354BEE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4E7D5B62518500319D32B7FD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirAsia/Pods-AirAsia-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7442E8218D1DC28A34A1A218 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AirAsia-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8FAEB1E65FD0EE46DCEF06A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AirAsia/Pods-AirAsia-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/QR-Code-Encoder-for-Objective-C/QR_Code_Encoder_for_Objective_C.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QR_Code_Encoder_for_Objective_C.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirAsia/Pods-AirAsia-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B144B7FB20538E2000354BEE /* Sources */ = {
@@ -325,20 +488,31 @@
 				2A00C00D20654A55005302D8 /* AISUIUtility.m in Sources */,
 				2A0D19232069D3A400C4DB98 /* AISContactUtility.m in Sources */,
 				2A0D1934206A634700C4DB98 /* AISSuccessfulPaymentPage.m in Sources */,
+				B10131EA206AA614000BDF3C /* qrinput.c in Sources */,
 				2A00BFF520652159005302D8 /* AISUserDetails+CoreDataClass.m in Sources */,
+				B10131E7206AA614000BDF3C /* qrencode.c in Sources */,
 				B144B81D2053994D00354BEE /* AISHomeViewController.m in Sources */,
+				B10131C5206A8235000BDF3C /* AISVoucher+CoreDataProperties.m in Sources */,
+				B10131E8206AA614000BDF3C /* bitstream.c in Sources */,
 				2A00BFF620652159005302D8 /* AISUserDetails+CoreDataProperties.m in Sources */,
 				2A00BFFA2065227B005302D8 /* AISLoginViewController.m in Sources */,
 				2A0D192A206A18FB00C4DB98 /* AISGiftCardViewController.m in Sources */,
+				B10131E9206AA614000BDF3C /* mask.c in Sources */,
+				B10131EB206AA614000BDF3C /* rscode.c in Sources */,
 				B144B80420538E2000354BEE /* AppDelegate.m in Sources */,
 				2A0D192D206A195100C4DB98 /* AISPaymentViewController.m in Sources */,
 				B144B81520538E2000354BEE /* main.m in Sources */,
+				B10131E5206AA614000BDF3C /* split.c in Sources */,
 				B144B822205399DD00354BEE /* AISUserManager.m in Sources */,
 				2A0D19272069F67B00C4DB98 /* AISContact.m in Sources */,
 				B144B80D20538E2000354BEE /* AirAsia.xcdatamodeld in Sources */,
+				B10131C4206A8235000BDF3C /* AISVoucher+CoreDataClass.m in Sources */,
+				B10131D6206AA602000BDF3C /* UIImage+MDQRCode.m in Sources */,
+				B10131E6206AA614000BDF3C /* qrspec.c in Sources */,
 				2A00C01220655575005302D8 /* AISUserView.m in Sources */,
 				2A0D191E20690ECE00C4DB98 /* AISSearchTableViewController.m in Sources */,
 				2A0D191B2069020D00C4DB98 /* NSData+Dictionary.m in Sources */,
+				B10131CF206A94DC000BDF3C /* AISFilePathUtility.m in Sources */,
 				2A00C00820652811005302D8 /* AISCoreDataManager.m in Sources */,
 				2A0D1931206A236600C4DB98 /* AISCardCell.m in Sources */,
 			);
@@ -472,26 +646,35 @@
 		};
 		B144B81920538E2000354BEE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1F467DC35002E5A6AE3E90C /* Pods-AirAsia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AirAsia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AIS.AirAsia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AirAsia/Payment/AirAsia-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		B144B81A20538E2000354BEE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C369996788D723296B3344D6 /* Pods-AirAsia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AirAsia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AIS.AirAsia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AirAsia/Payment/AirAsia-Bridging-Header.h";
+				SWIFT_VERSION = 3.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

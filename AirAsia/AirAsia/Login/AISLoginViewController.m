@@ -11,6 +11,7 @@
 #import "AISCoreDataManager.h"
 #import "AISUIUtility.h"
 #import "AISConstants.h"
+#import "NSData+Dictionary.h"
 
 @interface AISLoginViewController ()<UITextFieldDelegate>
 @property (nonatomic,weak)IBOutlet UITextField *username;
@@ -45,9 +46,20 @@
         [AISUIUtility showAlertWithMessage:@"Something Went wrong"];
         return;
     } else {
+        NSDictionary *loginDetails = [AISUIUtility dataFromJsonFileWithName:@"login"];
+        if (![self.username.text isEqualToString:loginDetails[@"userName"]]) {
+            NSLog(@"Mistmatch in username");
+            return;
+        }
+        
+        if (![self.password.text isEqualToString:loginDetails[@"password"]]) {
+            NSLog(@"Mistmatch in password");
+            return;
+        }
+        
         NSDictionary *dic = @{@"fullName" : @"Leena Patel",
                               @"email":@"abcd@gmail.com",
-                              @"username":@"leena",
+                              @"username":self.username.text,
                               @"phoneNum":@"9865435667",
                               @"avatar":@""};
         [[AISCoreDataManager sharedManager] saveUserInfo:dic withCompletion:^(BOOL success) {

@@ -8,6 +8,7 @@
 
 #import "AISUIUtility.h"
 #import "AppDelegate.h"
+#import "NSData+Dictionary.h"
 
 @implementation AISUIUtility
 + (void)addThemeToView:(UIView *)view {
@@ -27,6 +28,12 @@
         UIColor *color = [UIColor redColor];
         textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName: color}];
     }
+}
+
++ (NSDictionary *)dataFromJsonFileWithName:(NSString *)name {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:name ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+    return [data aa_Dictionary];
 }
 
 

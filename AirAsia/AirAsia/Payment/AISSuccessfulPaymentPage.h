@@ -10,4 +10,6 @@
 
 @interface AISSuccessfulPaymentPage : UIViewController
 
+@property (nonatomic)NSDictionary *voucherInfo;
+
 @end

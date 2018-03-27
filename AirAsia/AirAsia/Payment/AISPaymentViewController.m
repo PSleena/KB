@@ -8,6 +8,9 @@
 
 #import "AISPaymentViewController.h"
 #import "AISSuccessfulPaymentPage.h"
+#import "AISFilePathUtility.h"
+#import "AirAsia-Bridging-Header.h"
+#import "UIImage+MDQRCode.h"
 
 @interface AISPaymentViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,weak)IBOutlet UITableView *tableView;
@@ -22,24 +25,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.title = @"Order Details";
     self.paymentArr = @[@"Credit Card",@"Debit Card",@"Net banking",@"Wallet"];
-    
     [self setUpView];
 }
 
 - (void)setUpView {
     
     [self.payNow addTarget:self action:@selector(goToSuccessfulPaymentPage) forControlEvents:UIControlEventTouchUpInside];
-    
     self.paymentView.layer.borderWidth = 1;
     self.paymentView.layer.borderColor = [UIColor redColor].CGColor;
     
 }
 
 - (void)goToSuccessfulPaymentPage {
+    //get voucherID and QR code details from server.
+    UIImage *qrCode = [UIImage mdQRCodeForString:@"Qrcode" size:400];
+    NSData *imageData = UIImageJPEGRepresentation(qrCode, 1.0);
+    NSString *filePath = [AISFilePathUtility newQRCodePath];
+    [imageData writeToFile:filePath atomically:YES];
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:filePath forKey:@"filePath"];
+    self.voucherInfo = [dict copy];
+    
+    //Insert voucher in to DB
     AISSuccessfulPaymentPage *con = [self.storyboard instantiateViewControllerWithIdentifier:@"AISSuccessfulPaymentPage"];
+    con.voucherInfo = self.voucherInfo;
     [self.navigationController pushViewController:con animated:YES];
 }
 
@@ -65,14 +77,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
 }
-*/
+
 
 @end

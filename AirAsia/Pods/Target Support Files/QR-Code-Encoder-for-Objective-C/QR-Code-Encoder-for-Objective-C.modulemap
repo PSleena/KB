@@ -1,0 +1,6 @@
+framework module QR_Code_Encoder_for_Objective_C {
+  umbrella header "QR-Code-Encoder-for-Objective-C-umbrella.h"
+
+  export *
+  module * { export * }
+}

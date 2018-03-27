@@ -24,6 +24,7 @@
     
     self.orderView.layer.borderWidth = 1;
     self.orderView.layer.borderColor = [UIColor redColor].CGColor;
+    [self.shareButton addTarget:self action:@selector(actionButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -32,6 +33,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)actionButtonClicked:(id)sender {
+    NSString *filePath = self.voucherInfo[@"filePath"];
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+    UIImage *image = [UIImage imageWithContentsOfFile:self.voucherInfo[@"filePath"]];
+    NSArray *items = @[image];
+    UIActivityViewController *controller = [[UIActivityViewController alloc]initWithActivityItems:items applicationActivities:nil];
+    [self presentViewController:controller animated:YES completion:^{
+    }];
+    
+}
 
 #pragma mark - Navigation
 
