@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AISCoreDataManager.h"
 
 @interface AISUserManager : NSObject
+
+@property(nonatomic,strong)AISUserDetails *user;
+
++ (instancetype)sharedInstance;
+
+- (void)getuserDetailsWithCompletion:(void (^)(AISUserDetails *userDetail))completion;
 
 @end

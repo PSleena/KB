@@ -1,25 +1,26 @@
 //
-//  UserDetails+CoreDataClass.m
+//  AISUserDetails+CoreDataClass.m
 //  AirAsia
 //
-//  Created by Vijay on 10/03/18.
+//  Created by ATS on 3/23/18.
 //  Copyright © 2018 AirAsia. All rights reserved.
 //
 //
 
-#import "UserDetails+CoreDataClass.h"
-#import "AppDelegate.h"
+#import "AISUserDetails+CoreDataClass.h"
 
-@implementation UserDetails
+@implementation AISUserDetails
+
 + (void)insertUserDetailsWithUserName:(NSString *)username
                               emailId:(NSString *)email
                              phoneNum:(NSString *)phoneNum
+                             fullName:(NSString *)fullname
+                               avatar:(NSString *)avatar
+                                  moc:(NSManagedObjectContext*)moc
                        withCompletion:(void (^)(BOOL success))completion {
     
-    AppDelegate *del = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *moc = del.persistentContainer.viewContext;
     [moc performBlock:^{
-        UserDetails *user = [NSEntityDescription insertNewObjectForEntityForName:@"UserDetails" inManagedObjectContext:moc];
+        AISUserDetails *user = [NSEntityDescription insertNewObjectForEntityForName:@"AISUserDetails" inManagedObjectContext:moc];
         user.username = username;
         user.email = email;
         user.phoneNumber = phoneNum;
@@ -34,12 +35,11 @@
     }];
 }
 
-+ (void)getUserDetailsWithCompletion:(void (^)(UserDetails *userDetails))completion {
++ (void)getUserDetailsWithMoc:(NSManagedObjectContext*)moc
+               withCompletion:(void (^)(AISUserDetails *userDetails))completion {
     
-    AppDelegate *del = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *moc = del.persistentContainer.viewContext;
     [moc performBlock:^{
-        NSFetchRequest *fetchRequest = [UserDetails fetchRequest];
+        NSFetchRequest *fetchRequest = [AISUserDetails fetchRequest];
         NSArray *results = [moc executeFetchRequest:fetchRequest error:nil];
         if (results && results.count > 0) {
             if (completion) {

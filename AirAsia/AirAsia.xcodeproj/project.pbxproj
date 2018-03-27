@@ -7,8 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A00BFF520652159005302D8 /* AISUserDetails+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A00BFF220652159005302D8 /* AISUserDetails+CoreDataClass.m */; };
+		2A00BFF620652159005302D8 /* AISUserDetails+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A00BFF420652159005302D8 /* AISUserDetails+CoreDataProperties.m */; };
+		2A00BFFA2065227B005302D8 /* AISLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A00BFF92065227B005302D8 /* AISLoginViewController.m */; };
+		2A00C00820652811005302D8 /* AISCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A00C00720652811005302D8 /* AISCoreDataManager.m */; };
+		2A00C00D20654A55005302D8 /* AISUIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A00C00C20654A55005302D8 /* AISUIUtility.m */; };
+		2A00C01220655575005302D8 /* AISUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A00C01120655575005302D8 /* AISUserView.m */; };
+		2A00C0142065E6FD005302D8 /* joyce-huis-292442-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A00C0132065E6FC005302D8 /* joyce-huis-292442-unsplash.jpg */; };
+		2A0D191B2069020D00C4DB98 /* NSData+Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D191A2069020D00C4DB98 /* NSData+Dictionary.m */; };
+		2A0D191E20690ECE00C4DB98 /* AISSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D191D20690ECE00C4DB98 /* AISSearchTableViewController.m */; };
+		2A0D19232069D3A400C4DB98 /* AISContactUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D19222069D3A400C4DB98 /* AISContactUtility.m */; };
+		2A0D19272069F67B00C4DB98 /* AISContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D19262069F67B00C4DB98 /* AISContact.m */; };
+		2A0D192A206A18FB00C4DB98 /* AISGiftCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D1929206A18FB00C4DB98 /* AISGiftCardViewController.m */; };
+		2A0D192D206A195100C4DB98 /* AISPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D192C206A195100C4DB98 /* AISPaymentViewController.m */; };
 		B144B80420538E2000354BEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B144B80320538E2000354BEE /* AppDelegate.m */; };
-		B144B80720538E2000354BEE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B144B80620538E2000354BEE /* ViewController.m */; };
 		B144B80A20538E2000354BEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B144B80820538E2000354BEE /* Main.storyboard */; };
 		B144B80D20538E2000354BEE /* AirAsia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B144B80B20538E2000354BEE /* AirAsia.xcdatamodeld */; };
 		B144B80F20538E2000354BEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B144B80E20538E2000354BEE /* Assets.xcassets */; };
@@ -16,16 +28,38 @@
 		B144B81520538E2000354BEE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B144B81420538E2000354BEE /* main.m */; };
 		B144B81D2053994D00354BEE /* AISHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B144B81C2053994D00354BEE /* AISHomeViewController.m */; };
 		B144B822205399DD00354BEE /* AISUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B144B821205399DD00354BEE /* AISUserManager.m */; };
-		B16A900E2053A6F700FB2ADA /* UserDetails+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B16A900B2053A6F700FB2ADA /* UserDetails+CoreDataClass.m */; };
-		B16A900F2053A6F700FB2ADA /* UserDetails+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B16A900C2053A6F700FB2ADA /* UserDetails+CoreDataProperties.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A00BFF120652159005302D8 /* AISUserDetails+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AISUserDetails+CoreDataClass.h"; sourceTree = "<group>"; };
+		2A00BFF220652159005302D8 /* AISUserDetails+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AISUserDetails+CoreDataClass.m"; sourceTree = "<group>"; };
+		2A00BFF320652159005302D8 /* AISUserDetails+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AISUserDetails+CoreDataProperties.h"; sourceTree = "<group>"; };
+		2A00BFF420652159005302D8 /* AISUserDetails+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AISUserDetails+CoreDataProperties.m"; sourceTree = "<group>"; };
+		2A00BFF82065227B005302D8 /* AISLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISLoginViewController.h; sourceTree = "<group>"; };
+		2A00BFF92065227B005302D8 /* AISLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISLoginViewController.m; sourceTree = "<group>"; };
+		2A00C00620652811005302D8 /* AISCoreDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISCoreDataManager.h; sourceTree = "<group>"; };
+		2A00C00720652811005302D8 /* AISCoreDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISCoreDataManager.m; sourceTree = "<group>"; };
+		2A00C00B20654A55005302D8 /* AISUIUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISUIUtility.h; sourceTree = "<group>"; };
+		2A00C00C20654A55005302D8 /* AISUIUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISUIUtility.m; sourceTree = "<group>"; };
+		2A00C00E20654C43005302D8 /* AISConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISConstants.h; sourceTree = "<group>"; };
+		2A00C01020655575005302D8 /* AISUserView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISUserView.h; sourceTree = "<group>"; };
+		2A00C01120655575005302D8 /* AISUserView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISUserView.m; sourceTree = "<group>"; };
+		2A00C0132065E6FC005302D8 /* joyce-huis-292442-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "joyce-huis-292442-unsplash.jpg"; sourceTree = "<group>"; };
+		2A0D19192069020D00C4DB98 /* NSData+Dictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+Dictionary.h"; sourceTree = "<group>"; };
+		2A0D191A2069020D00C4DB98 /* NSData+Dictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+Dictionary.m"; sourceTree = "<group>"; };
+		2A0D191C20690ECE00C4DB98 /* AISSearchTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISSearchTableViewController.h; sourceTree = "<group>"; };
+		2A0D191D20690ECE00C4DB98 /* AISSearchTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISSearchTableViewController.m; sourceTree = "<group>"; };
+		2A0D19212069D3A400C4DB98 /* AISContactUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISContactUtility.h; sourceTree = "<group>"; };
+		2A0D19222069D3A400C4DB98 /* AISContactUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISContactUtility.m; sourceTree = "<group>"; };
+		2A0D19252069F67B00C4DB98 /* AISContact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISContact.h; sourceTree = "<group>"; };
+		2A0D19262069F67B00C4DB98 /* AISContact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISContact.m; sourceTree = "<group>"; };
+		2A0D1928206A18FB00C4DB98 /* AISGiftCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISGiftCardViewController.h; sourceTree = "<group>"; };
+		2A0D1929206A18FB00C4DB98 /* AISGiftCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISGiftCardViewController.m; sourceTree = "<group>"; };
+		2A0D192B206A195100C4DB98 /* AISPaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISPaymentViewController.h; sourceTree = "<group>"; };
+		2A0D192C206A195100C4DB98 /* AISPaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISPaymentViewController.m; sourceTree = "<group>"; };
 		B144B7FF20538E2000354BEE /* AirAsia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirAsia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B144B80220538E2000354BEE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B144B80320538E2000354BEE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B144B80520538E2000354BEE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B144B80620538E2000354BEE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B144B80920538E2000354BEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B144B80C20538E2000354BEE /* AirAsia.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AirAsia.xcdatamodel; sourceTree = "<group>"; };
 		B144B80E20538E2000354BEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -36,10 +70,6 @@
 		B144B81C2053994D00354BEE /* AISHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISHomeViewController.m; sourceTree = "<group>"; };
 		B144B820205399DD00354BEE /* AISUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISUserManager.h; sourceTree = "<group>"; };
 		B144B821205399DD00354BEE /* AISUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISUserManager.m; sourceTree = "<group>"; };
-		B16A900A2053A6F700FB2ADA /* UserDetails+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UserDetails+CoreDataClass.h"; path = "coredataModel/UserDetails+CoreDataClass.h"; sourceTree = "<group>"; };
-		B16A900B2053A6F700FB2ADA /* UserDetails+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UserDetails+CoreDataClass.m"; path = "coredataModel/UserDetails+CoreDataClass.m"; sourceTree = "<group>"; };
-		B16A900C2053A6F700FB2ADA /* UserDetails+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UserDetails+CoreDataProperties.m"; path = "coredataModel/UserDetails+CoreDataProperties.m"; sourceTree = "<group>"; };
-		B16A900D2053A6F700FB2ADA /* UserDetails+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UserDetails+CoreDataProperties.h"; path = "coredataModel/UserDetails+CoreDataProperties.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,13 +83,95 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A00BFF7206521D9005302D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A00BFF120652159005302D8 /* AISUserDetails+CoreDataClass.h */,
+				2A00BFF220652159005302D8 /* AISUserDetails+CoreDataClass.m */,
+				2A00BFF320652159005302D8 /* AISUserDetails+CoreDataProperties.h */,
+				2A00BFF420652159005302D8 /* AISUserDetails+CoreDataProperties.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2A00BFFB206523F8005302D8 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B144B820205399DD00354BEE /* AISUserManager.h */,
+				B144B821205399DD00354BEE /* AISUserManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		2A00BFFC2065254F005302D8 /* Coredata */ = {
+			isa = PBXGroup;
+			children = (
+				2A00C00620652811005302D8 /* AISCoreDataManager.h */,
+				2A00C00720652811005302D8 /* AISCoreDataManager.m */,
+			);
+			path = Coredata;
+			sourceTree = "<group>";
+		};
+		2A00C00920653858005302D8 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				2A00C00E20654C43005302D8 /* AISConstants.h */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		2A00C00A20654A27005302D8 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				2A00C00B20654A55005302D8 /* AISUIUtility.h */,
+				2A00C00C20654A55005302D8 /* AISUIUtility.m */,
+				2A0D19192069020D00C4DB98 /* NSData+Dictionary.h */,
+				2A0D191A2069020D00C4DB98 /* NSData+Dictionary.m */,
+				2A0D19212069D3A400C4DB98 /* AISContactUtility.h */,
+				2A0D19222069D3A400C4DB98 /* AISContactUtility.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		2A00C00F20655550005302D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A00C01020655575005302D8 /* AISUserView.h */,
+				2A00C01120655575005302D8 /* AISUserView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2A0D191F20695F5700C4DB98 /* GiftCard */ = {
+			isa = PBXGroup;
+			children = (
+				2A0D1928206A18FB00C4DB98 /* AISGiftCardViewController.h */,
+				2A0D1929206A18FB00C4DB98 /* AISGiftCardViewController.m */,
+			);
+			path = GiftCard;
+			sourceTree = "<group>";
+		};
+		2A0D192020695F6500C4DB98 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				2A0D192B206A195100C4DB98 /* AISPaymentViewController.h */,
+				2A0D192C206A195100C4DB98 /* AISPaymentViewController.m */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		2A0D19242069F65B00C4DB98 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A0D19252069F67B00C4DB98 /* AISContact.h */,
+				2A0D19262069F67B00C4DB98 /* AISContact.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B144B7F620538E2000354BEE = {
 			isa = PBXGroup;
 			children = (
-				B16A900A2053A6F700FB2ADA /* UserDetails+CoreDataClass.h */,
-				B16A900B2053A6F700FB2ADA /* UserDetails+CoreDataClass.m */,
-				B16A900D2053A6F700FB2ADA /* UserDetails+CoreDataProperties.h */,
-				B16A900C2053A6F700FB2ADA /* UserDetails+CoreDataProperties.m */,
 				B144B80120538E2000354BEE /* AirAsia */,
 				B144B80020538E2000354BEE /* Products */,
 			);
@@ -76,13 +188,19 @@
 		B144B80120538E2000354BEE /* AirAsia */ = {
 			isa = PBXGroup;
 			children = (
+				2A0D192020695F6500C4DB98 /* Payment */,
+				2A0D191F20695F5700C4DB98 /* GiftCard */,
+				2A00C00A20654A27005302D8 /* Utility */,
+				2A00C00920653858005302D8 /* Constant */,
+				2A00BFFC2065254F005302D8 /* Coredata */,
+				2A00BFFB206523F8005302D8 /* Manager */,
+				2A00BFF7206521D9005302D8 /* Model */,
 				B144B81F2053996F00354BEE /* HomeScreen */,
 				B144B81E2053995F00354BEE /* Login */,
 				B144B80220538E2000354BEE /* AppDelegate.h */,
 				B144B80320538E2000354BEE /* AppDelegate.m */,
-				B144B820205399DD00354BEE /* AISUserManager.h */,
-				B144B821205399DD00354BEE /* AISUserManager.m */,
 				B144B80820538E2000354BEE /* Main.storyboard */,
+				2A00C0132065E6FC005302D8 /* joyce-huis-292442-unsplash.jpg */,
 				B144B80E20538E2000354BEE /* Assets.xcassets */,
 				B144B81020538E2000354BEE /* LaunchScreen.storyboard */,
 				B144B81320538E2000354BEE /* Info.plist */,
@@ -95,8 +213,8 @@
 		B144B81E2053995F00354BEE /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B144B80520538E2000354BEE /* ViewController.h */,
-				B144B80620538E2000354BEE /* ViewController.m */,
+				2A00BFF82065227B005302D8 /* AISLoginViewController.h */,
+				2A00BFF92065227B005302D8 /* AISLoginViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -104,8 +222,12 @@
 		B144B81F2053996F00354BEE /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				2A0D19242069F65B00C4DB98 /* Model */,
+				2A00C00F20655550005302D8 /* View */,
 				B144B81B2053994D00354BEE /* AISHomeViewController.h */,
 				B144B81C2053994D00354BEE /* AISHomeViewController.m */,
+				2A0D191C20690ECE00C4DB98 /* AISSearchTableViewController.h */,
+				2A0D191D20690ECE00C4DB98 /* AISSearchTableViewController.m */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";
@@ -168,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A00C0142065E6FD005302D8 /* joyce-huis-292442-unsplash.jpg in Resources */,
 				B144B81220538E2000354BEE /* LaunchScreen.storyboard in Resources */,
 				B144B80F20538E2000354BEE /* Assets.xcassets in Resources */,
 				B144B80A20538E2000354BEE /* Main.storyboard in Resources */,
@@ -181,14 +304,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B16A900E2053A6F700FB2ADA /* UserDetails+CoreDataClass.m in Sources */,
+				2A00C00D20654A55005302D8 /* AISUIUtility.m in Sources */,
+				2A0D19232069D3A400C4DB98 /* AISContactUtility.m in Sources */,
+				2A00BFF520652159005302D8 /* AISUserDetails+CoreDataClass.m in Sources */,
 				B144B81D2053994D00354BEE /* AISHomeViewController.m in Sources */,
-				B144B80720538E2000354BEE /* ViewController.m in Sources */,
+				2A00BFF620652159005302D8 /* AISUserDetails+CoreDataProperties.m in Sources */,
+				2A00BFFA2065227B005302D8 /* AISLoginViewController.m in Sources */,
+				2A0D192A206A18FB00C4DB98 /* AISGiftCardViewController.m in Sources */,
 				B144B80420538E2000354BEE /* AppDelegate.m in Sources */,
+				2A0D192D206A195100C4DB98 /* AISPaymentViewController.m in Sources */,
 				B144B81520538E2000354BEE /* main.m in Sources */,
 				B144B822205399DD00354BEE /* AISUserManager.m in Sources */,
-				B16A900F2053A6F700FB2ADA /* UserDetails+CoreDataProperties.m in Sources */,
+				2A0D19272069F67B00C4DB98 /* AISContact.m in Sources */,
 				B144B80D20538E2000354BEE /* AirAsia.xcdatamodeld in Sources */,
+				2A00C01220655575005302D8 /* AISUserView.m in Sources */,
+				2A0D191E20690ECE00C4DB98 /* AISSearchTableViewController.m in Sources */,
+				2A0D191B2069020D00C4DB98 /* NSData+Dictionary.m in Sources */,
+				2A00C00820652811005302D8 /* AISCoreDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
