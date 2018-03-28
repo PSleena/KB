@@ -70,7 +70,6 @@
                     //NSLog(@"EMAIL: %@",email);
                     AISContact *contact = [[AISContact alloc] init];
                     contact.fullName = fullName;
-                    contact.userImage = profileImage;
                     contact.phone = phone;
                     contact.email = email;
                     

@@ -13,7 +13,6 @@
 @interface AISUserManager : NSObject
 
 @property(nonatomic,strong)AISUserDetails *user;
-@property(nonatomic,strong) AISContact *selectedContact;
 
 + (instancetype)sharedInstance;
 

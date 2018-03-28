@@ -57,11 +57,7 @@
             return;
         }
         
-        NSDictionary *dic = @{@"fullName" : @"Leena Patel",
-                              @"email":@"abcd@gmail.com",
-                              @"username":self.username.text,
-                              @"phoneNum":@"9865435667",
-                              @"avatar":@""};
+        NSDictionary *dic = [AISUIUtility dataFromJsonFileWithName:@"loginResponse"];
         [[AISCoreDataManager sharedManager] saveUserInfo:dic withCompletion:^(BOOL success) {
             if (success) {
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kUserDefaultuserLogin];

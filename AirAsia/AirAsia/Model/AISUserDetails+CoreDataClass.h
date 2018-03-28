@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)getUserDetailsWithMoc:(NSManagedObjectContext*)moc
                withCompletion:(void (^)(AISUserDetails *userDetails))completion;
 
++ (void)deleteUserDetailsWithMoc:(NSManagedObjectContext*)moc
+                       withCompletion:(void (^)(BOOL success))completion;
+
 @end
 
 NS_ASSUME_NONNULL_END

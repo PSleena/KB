@@ -49,4 +49,18 @@
     }];
 }
 
++ (void)deleteUserDetailsWithMoc:(NSManagedObjectContext*)moc
+                  withCompletion:(void (^)(BOOL success))completion {
+    [moc performBlock:^{
+        NSFetchRequest *fetchRequest = [AISUserDetails fetchRequest];
+        NSArray *results = [moc executeFetchRequest:fetchRequest error:nil];
+        
+        for (NSManagedObject *result in results) {
+            [moc deleteObject:result];
+        }
+        NSError *saveError = nil;
+        [moc save:&saveError];
+    }];
+}
+
 @end

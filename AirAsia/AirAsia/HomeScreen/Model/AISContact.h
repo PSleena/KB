@@ -16,7 +16,7 @@
 @property (nonatomic,strong) NSString *fullName;
 @property (nonatomic,strong) NSString *phone;
 @property (nonatomic,strong) NSString *email;
-@property (nonatomic,strong) UIImage *userImage;
+@property (nonatomic,strong) NSString *message;
 
 @end
 

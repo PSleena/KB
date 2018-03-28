@@ -10,5 +10,5 @@
 #import "AISContact.h"
 
 @interface AISGiftCardViewController : UIViewController
-
+@property (nonatomic,strong) AISContact *selecteContact;
 @end

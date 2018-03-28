@@ -13,10 +13,13 @@
 #import "AISContact.h"
 #import "AISCardCell.h"
 #import "AISGiftCardViewController.h"
+#import <ContactsUI/ContactsUI.h>
+#import "AISUserViewController.h"
+
 
 #define MESSAGE_PLACEHOLDER @"Enter your Message"
 
-@interface AISHomeViewController ()<UITextFieldDelegate,UITextViewDelegate,AISSearchTableViewControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface AISHomeViewController ()<UITextFieldDelegate,UITextViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CNContactPickerDelegate>
 @property(nonatomic,weak)IBOutlet AISUserView *userView;
 @property(nonatomic,weak)IBOutlet UITextField *contactTextField;
 @property(nonatomic,weak)IBOutlet UITextView *messageTextView;
@@ -49,6 +52,11 @@
             [self.userView updateViewWithName:[AISUserManager sharedInstance].user.username andAvatarPath:[AISUserManager sharedInstance].user.avatar];
         }];
     }
+    
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(handleSingleTap:)];
+    [self.userView addGestureRecognizer:singleFingerTap];
     
     [AISUIUtility setPlaceHolderColor:self.contactTextField placeHoldertext:@"name/email/phone"];
     
@@ -89,11 +97,25 @@
     self.collectionView.showsHorizontalScrollIndicator = YES;
 }
 
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
+{
+    AISUserViewController *vwCon = [self.storyboard instantiateViewControllerWithIdentifier:@"AISUserViewController"];
+    [self.navigationController pushViewController:vwCon animated:YES];
+}
+
 - (void)openContactPicker {
-    AISSearchTableViewController *con = [self.storyboard instantiateViewControllerWithIdentifier:@"AISSearchTableViewController"];
-    con.searchString = self.contactTextField.text;
-    con.delegate = self;
-    [self.navigationController pushViewController:con animated:YES];
+//    AISSearchTableViewController *con = [self.storyboard instantiateViewControllerWithIdentifier:@"AISSearchTableViewController"];
+//    con.searchString = self.contactTextField.text;
+//    con.delegate = self;
+//    [self.navigationController pushViewController:con animated:YES];
+    
+    CNContactPickerViewController *contactPicker = [[CNContactPickerViewController alloc] init];
+    contactPicker.delegate = self;
+    contactPicker.displayedPropertyKeys = @[CNContactGivenNameKey, CNContactImageDataAvailableKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactThumbnailImageDataKey, CNContactIdentifierKey];
+    contactPicker.predicateForEnablingContact = [NSPredicate predicateWithFormat:@"phoneNumbers.@count > 0"];
+    contactPicker.predicateForSelectionOfContact = [NSPredicate predicateWithFormat:@"phoneNumbers.@count == 1"];
+    contactPicker.predicateForSelectionOfProperty = [NSPredicate predicateWithFormat:@"key == 'phoneNumbers'"];
+    [self presentViewController:contactPicker animated:YES completion:nil];
 }
 
 - (void)openCardView {
@@ -155,6 +177,11 @@
         self.messageTextView.textColor = [UIColor lightGrayColor];
         self.messageTextView.text = MESSAGE_PLACEHOLDER;
         [self.messageTextView resignFirstResponder];
+        
+        if(self.selectedContact == nil){
+            self.selectedContact = [[AISContact alloc] init];
+        }
+        self.selectedContact.message = textView.text;
     }
 }
 
@@ -168,11 +195,38 @@
     return YES;
 }
 
-- (void)selectedContact:(AISContact *)contact {
-    self.selectedContact = contact;
-    self.contactTextField.text = contact.fullName;
-    [[AISUserManager sharedInstance] setSelectedContact:contact];
+//- (void)selectedContact:(AISContact *)contact {
+//    self.selectedContact = contact;
+//    self.contactTextField.text = contact.fullName;
+//}
+
+# pragma mark - peoplePickerDelegate methods
+- (void)contactPickerDidCancel:(CNContactPickerViewController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void)contactPicker:(CNContactPickerViewController *)picker didSelectContact:(CNContact *)contact {
+    [picker dismissViewControllerAnimated:NO completion:nil];
+}
+- (void)contactPicker:(CNContactPickerViewController *)picker didSelectContactProperty:(CNContactProperty *)contactProperty {
+    self.selectedContact = nil;
+    self.selectedContact = [[AISContact alloc] init];
+    
+    CNLabeledValue *emailValue = contactProperty.contact.emailAddresses.firstObject;
+    NSString *emailString = emailValue.value;
+    self.selectedContact.email = emailString;
+    
+    CNLabeledValue *phoneNumberValue = contactProperty.contact.phoneNumbers.firstObject;
+    CNPhoneNumber *phoneNumber = phoneNumberValue.value;
+    NSString *phoneNumberString = phoneNumber.stringValue;
+    self.selectedContact.phone = phoneNumberString;
+
+    NSString *name = contactProperty.contact.givenName;
+    self.selectedContact.fullName = name;
+    
+    self.contactTextField.text = self.selectedContact.phone;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

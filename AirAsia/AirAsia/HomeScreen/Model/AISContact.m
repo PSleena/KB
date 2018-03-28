@@ -14,10 +14,11 @@
     self = [super init];
     
     if (self) {
-        self.userImage = dic[@"userImage"];
-        self.fullName = dic[@"fullName"];
-        self.phone = dic[@"PhoneNumbers"];
-        self.email = dic[@"userEmailId"];
+        self.fullName = dic[@"fullName"] ?: @"";
+        self.phone = dic[@"PhoneNumbers"] ?: @"";
+        self.email = dic[@"userEmailId"] ?: @"";
+        self.message = dic[@"message"] ?: @"";
+
     }
     return self;
 }

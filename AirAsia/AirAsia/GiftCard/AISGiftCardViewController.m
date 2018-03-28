@@ -32,7 +32,7 @@
                                                              style:UIBarButtonItemStylePlain target:self action:@selector(moveToPayment)];
     self.navigationItem.rightBarButtonItem = nextBtn;
     
-    self.nameField.text = [AISUserManager sharedInstance].selectedContact.fullName;
+    self.nameField.text = self.selecteContact.fullName;
     
     UICollectionViewFlowLayout *cardCellViewLayout = [[UICollectionViewFlowLayout alloc] init];
     cardCellViewLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
