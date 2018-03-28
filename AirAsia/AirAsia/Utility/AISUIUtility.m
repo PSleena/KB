@@ -20,6 +20,11 @@
 
 + (void)showAlertWithMessage:(NSString *)message {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* okButton = [UIAlertAction actionWithTitle:@"Ok"
+                                                        style:UIAlertActionStyleCancel
+                                                      handler:nil];
+    
+    [alert addAction:okButton];
     [[[UIApplication sharedApplication] delegate].window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 

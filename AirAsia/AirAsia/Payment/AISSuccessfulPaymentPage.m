@@ -26,6 +26,8 @@
     self.orderView.layer.borderColor = [UIColor redColor].CGColor;
     [self.shareButton addTarget:self action:@selector(actionButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
+    self.price.text = self.voucher.price;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,9 +36,8 @@
 }
 
 - (IBAction)actionButtonClicked:(id)sender {
-    NSString *filePath = self.voucherInfo[@"filePath"];
-    NSData *data = [NSData dataWithContentsOfFile:filePath];
-    UIImage *image = [UIImage imageWithContentsOfFile:self.voucherInfo[@"filePath"]];
+    NSString *filePath = self.voucher.qrCodePath;
+    UIImage *image = [UIImage imageWithContentsOfFile:filePath];
     NSArray *items = @[image];
     UIActivityViewController *controller = [[UIActivityViewController alloc]initWithActivityItems:items applicationActivities:nil];
     [self presentViewController:controller animated:YES completion:^{

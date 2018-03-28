@@ -15,6 +15,12 @@
 #import "AISGiftCardViewController.h"
 #import <ContactsUI/ContactsUI.h>
 #import "AISUserViewController.h"
+#import "NSData+Dictionary.h"
+#import "AISVoucherModel.h"
+#import "AISSuccessfulPaymentPage.h"
+#import "UIImage+MDQRCode.h"
+#import "AISFilePathUtility.h"
+
 
 
 #define MESSAGE_PLACEHOLDER @"Enter your Message"
@@ -27,6 +33,7 @@
 @property(nonatomic,weak)IBOutlet UIButton *sendCardButton;
 @property(nonatomic,weak)IBOutlet UIButton *createCardButton;
 @property(nonatomic,weak)IBOutlet UICollectionView *collectionView;
+@property(nonatomic,strong)NSMutableArray *voucherarr;
 
 @property (nonatomic,strong)AISContact *selectedContact;
 
@@ -37,7 +44,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpUI];
-    // Do any additional setup after loading the view.
+    
+    NSDictionary *dic = [AISUIUtility dataFromJsonFileWithName:@"Config"];
+    self.voucherarr = [[NSMutableArray alloc] init];
+    NSArray *arr = dic[@"voucherDetails"];
+    for (NSDictionary *voucher in arr) {
+        AISVoucherModel *vObj = [[AISVoucherModel alloc]initWithInfo:voucher];
+        [self.voucherarr addObject:vObj];
+    }
+    [self.collectionView reloadData];
+    
 }
 
 - (void)setUpUI {
@@ -80,7 +96,6 @@
     
     [self setUpCollectionView];
     
-    [self.collectionView reloadData];
     
 }
 
@@ -119,7 +134,12 @@
 }
 
 - (void)openCardView {
+    if (self.contactTextField.text.length == 0) {
+        [AISUIUtility showAlertWithMessage:@"Enter Recipient"];
+        return;
+    }
     AISGiftCardViewController *con = [self.storyboard instantiateViewControllerWithIdentifier:@"AISGiftCardViewController"];
+    con.selecteContact = self.selectedContact;
     [self.navigationController pushViewController:con animated:YES];
 }
 
@@ -136,7 +156,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
-        return 5;
+        return self.voucherarr.count;
     
 }
 
@@ -144,18 +164,24 @@
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AISCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyOwnCards" forIndexPath:indexPath];
     cell.check.hidden = YES;
+    AISVoucherModel *voucher = [self.voucherarr objectAtIndex:indexPath.item];
+    cell.price.text = voucher.price;
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    AISCardCell *cell = (AISCardCell*)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.check.hidden = NO;
+    AISSuccessfulPaymentPage *con = [self.storyboard instantiateViewControllerWithIdentifier:@"AISSuccessfulPaymentPage"];
+    
+    UIImage *qrCode = [UIImage mdQRCodeForString:@"Qrcode" size:400];
+    NSData *imageData = UIImageJPEGRepresentation(qrCode, 1.0);
+    NSString *filePath = [AISFilePathUtility newQRCodePath];
+    [imageData writeToFile:filePath atomically:YES];
+    
+    con.voucher = [self.voucherarr objectAtIndex:indexPath.item];
+    con.voucher.qrCodePath = filePath;
+    [self.navigationController pushViewController:con animated:YES];
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    AISCardCell *cell = (AISCardCell*)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.check.hidden = YES;
-}
 
 #pragma mark - TextField Delegate
 
@@ -206,7 +232,22 @@
 }
 
 - (void)contactPicker:(CNContactPickerViewController *)picker didSelectContact:(CNContact *)contact {
-    [picker dismissViewControllerAnimated:NO completion:nil];
+    self.selectedContact = nil;
+    self.selectedContact = [[AISContact alloc] init];
+    
+    CNLabeledValue *emailValue = contact.emailAddresses.firstObject;
+    NSString *emailString = emailValue.value;
+    self.selectedContact.email = emailString;
+    
+    CNLabeledValue *phoneNumberValue = contact.phoneNumbers.firstObject;
+    CNPhoneNumber *phoneNumber = phoneNumberValue.value;
+    NSString *phoneNumberString = phoneNumber.stringValue;
+    self.selectedContact.phone = phoneNumberString;
+    
+    NSString *name = contact.givenName;
+    self.selectedContact.fullName = name;
+    
+    self.contactTextField.text = self.selectedContact.phone;
 }
 - (void)contactPicker:(CNContactPickerViewController *)picker didSelectContactProperty:(CNContactProperty *)contactProperty {
     self.selectedContact = nil;

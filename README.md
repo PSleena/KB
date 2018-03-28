@@ -28,3 +28,18 @@ you can use AirAsia Logo for branding.
 
 You have 120 minutes to finish this. All the Best!!!
 
+#Leena
+
+1 - Inside JsonFolders, Son Structures are there
+2 - Login - username : Leena, password: leena@1234
+3 - You can change the username and password in login json to login with different credential
+4 - After login, I am saving UserDetails
+5 - In home screen, we are calling one config API(json is available in json folder), where user will get his all paid voucher/coupon
+6 - Create own card is not done
+7-once clicked on paid voucher/coupon, user will be redirected to share screen with voucher details
+8 - if user enter recipient name and message and click send card, in screen C I am fetching all vouchers(json is there)
+7-select amount and price and it will redirect to screen D I.e payment.
+8 - After payment, user will go to screen E with successful payments and barcode will be generated.
+7 . Currently You can share it will any person . To send specific recipient, I need to set up share extension. It will take time.
+8 - logout option is there in userDetail screen which will come if you click on Username in screen B.
+

@@ -11,4 +11,5 @@
 @interface AISCardCell : UICollectionViewCell
 @property(nonatomic,weak)IBOutlet UIImageView *cardImage;
 @property(nonatomic,weak)IBOutlet UIImageView *check;
+@property(nonatomic,weak)IBOutlet UILabel *price;
 @end

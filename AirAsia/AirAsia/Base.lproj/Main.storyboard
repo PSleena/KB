@@ -242,6 +242,12 @@
                                                         <constraint firstAttribute="height" constant="40" id="rgh-1b-de2"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaH-lg-Y4k">
+                                                    <rect key="frame" x="74.5" y="5" width="42.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                    <color key="textColor" red="1" green="0.2357257338" blue="0.10379214690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -250,12 +256,15 @@
                                             <constraint firstAttribute="bottom" secondItem="w4o-Jp-N3m" secondAttribute="bottom" id="9U0-Fc-Wt2"/>
                                             <constraint firstItem="w4o-Jp-N3m" firstAttribute="top" secondItem="M0R-ZE-8BP" secondAttribute="top" id="Dgg-cv-dL0"/>
                                             <constraint firstItem="w4o-Jp-N3m" firstAttribute="leading" secondItem="M0R-ZE-8BP" secondAttribute="leading" id="hDO-HD-sgI"/>
+                                            <constraint firstAttribute="trailing" secondItem="oaH-lg-Y4k" secondAttribute="trailing" constant="5" id="io2-wv-jVD"/>
                                             <constraint firstAttribute="bottom" secondItem="5dK-Pf-A9h" secondAttribute="bottom" id="pg9-XX-7BC"/>
+                                            <constraint firstItem="oaH-lg-Y4k" firstAttribute="top" secondItem="M0R-ZE-8BP" secondAttribute="top" constant="5" id="s9z-SE-pE0"/>
                                         </constraints>
                                         <size key="customSize" width="122" height="77"/>
                                         <connections>
                                             <outlet property="cardImage" destination="w4o-Jp-N3m" id="exY-Zn-ke5"/>
                                             <outlet property="check" destination="5dK-Pf-A9h" id="3Bo-ZU-IVS"/>
+                                            <outlet property="price" destination="oaH-lg-Y4k" id="FjX-aq-wph"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -479,11 +488,19 @@
                                                         <constraint firstAttribute="height" constant="36" id="ZLQ-Cx-Eew"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQ8-g0-kNx">
+                                                    <rect key="frame" x="105" y="13" width="40" height="18"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <color key="textColor" red="1" green="0.2357257338" blue="0.10379214690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="eQY-xN-wYN" secondAttribute="trailing" id="GIi-rB-nm7"/>
+                                            <constraint firstItem="TQ8-g0-kNx" firstAttribute="trailing" secondItem="eD3-Ta-GOz" secondAttribute="trailingMargin" constant="5" id="NMM-KU-vMg"/>
                                             <constraint firstAttribute="bottom" secondItem="jii-GA-gOK" secondAttribute="bottom" constant="4" id="VqW-Xu-M4w"/>
+                                            <constraint firstItem="TQ8-g0-kNx" firstAttribute="top" secondItem="eD3-Ta-GOz" secondAttribute="topMargin" constant="5" id="dbs-gt-ykY"/>
                                             <constraint firstAttribute="trailing" secondItem="jii-GA-gOK" secondAttribute="trailing" constant="4" id="es1-Uz-wBb"/>
                                             <constraint firstItem="eQY-xN-wYN" firstAttribute="top" secondItem="eD3-Ta-GOz" secondAttribute="top" id="f8i-yn-fCl"/>
                                             <constraint firstItem="eQY-xN-wYN" firstAttribute="leading" secondItem="eD3-Ta-GOz" secondAttribute="leading" id="rWr-5y-kpr"/>
@@ -493,6 +510,7 @@
                                         <connections>
                                             <outlet property="cardImage" destination="eQY-xN-wYN" id="9aw-6M-su3"/>
                                             <outlet property="check" destination="jii-GA-gOK" id="swf-bD-kes"/>
+                                            <outlet property="price" destination="TQ8-g0-kNx" id="yKd-Q0-IjV"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

@@ -24,6 +24,9 @@
 		2A0D1934206A634700C4DB98 /* AISSuccessfulPaymentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0D1933206A634700C4DB98 /* AISSuccessfulPaymentPage.m */; };
 		2A11C452206B2FE1007615A0 /* loginResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A11C451206B2FE0007615A0 /* loginResponse.json */; };
 		2A11C456206B3600007615A0 /* AISUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A11C455206B3600007615A0 /* AISUserViewController.m */; };
+		2A11C458206B3E3E007615A0 /* Config.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A11C457206B3E3E007615A0 /* Config.json */; };
+		2A11C45E206B6C72007615A0 /* voucherListFromServer.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A11C45D206B6C72007615A0 /* voucherListFromServer.json */; };
+		2A11C461206B7441007615A0 /* AISVoucherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A11C460206B7441007615A0 /* AISVoucherModel.m */; };
 		B10131BD206A7ED6000BDF3C /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = B10131BC206A7ED6000BDF3C /* login.json */; };
 		B10131BF206A7F5C000BDF3C /* voucher.json in Resources */ = {isa = PBXBuildFile; fileRef = B10131BE206A7F5C000BDF3C /* voucher.json */; };
 		B10131C4206A8235000BDF3C /* AISVoucher+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B10131C2206A8235000BDF3C /* AISVoucher+CoreDataClass.m */; };
@@ -82,6 +85,10 @@
 		2A11C451206B2FE0007615A0 /* loginResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loginResponse.json; sourceTree = "<group>"; };
 		2A11C454206B3600007615A0 /* AISUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISUserViewController.h; sourceTree = "<group>"; };
 		2A11C455206B3600007615A0 /* AISUserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISUserViewController.m; sourceTree = "<group>"; };
+		2A11C457206B3E3E007615A0 /* Config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Config.json; sourceTree = "<group>"; };
+		2A11C45D206B6C72007615A0 /* voucherListFromServer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = voucherListFromServer.json; sourceTree = "<group>"; };
+		2A11C45F206B7441007615A0 /* AISVoucherModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AISVoucherModel.h; sourceTree = "<group>"; };
+		2A11C460206B7441007615A0 /* AISVoucherModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AISVoucherModel.m; sourceTree = "<group>"; };
 		B10131BC206A7ED6000BDF3C /* login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
 		B10131BE206A7F5C000BDF3C /* voucher.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = voucher.json; sourceTree = "<group>"; };
 		B10131C0206A8235000BDF3C /* AISVoucher+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AISVoucher+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -137,7 +144,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2A00BFF7206521D9005302D8 /* Model */ = {
+		2A00BFF7206521D9005302D8 /* CoredataModel */ = {
 			isa = PBXGroup;
 			children = (
 				2A00BFF120652159005302D8 /* AISUserDetails+CoreDataClass.h */,
@@ -149,7 +156,7 @@
 				B10131C1206A8235000BDF3C /* AISVoucher+CoreDataClass.h */,
 				B10131C2206A8235000BDF3C /* AISVoucher+CoreDataClass.m */,
 			);
-			path = Model;
+			path = CoredataModel;
 			sourceTree = "<group>";
 		};
 		2A00BFFB206523F8005302D8 /* Manager */ = {
@@ -224,15 +231,6 @@
 			path = Payment;
 			sourceTree = "<group>";
 		};
-		2A0D19242069F65B00C4DB98 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2A0D19252069F67B00C4DB98 /* AISContact.h */,
-				2A0D19262069F67B00C4DB98 /* AISContact.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		2A0D192E206A233900C4DB98 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +247,17 @@
 				2A11C455206B3600007615A0 /* AISUserViewController.m */,
 			);
 			path = UserDetails;
+			sourceTree = "<group>";
+		};
+		2A11C459206B41FB007615A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A0D19252069F67B00C4DB98 /* AISContact.h */,
+				2A0D19262069F67B00C4DB98 /* AISContact.m */,
+				2A11C45F206B7441007615A0 /* AISVoucherModel.h */,
+				2A11C460206B7441007615A0 /* AISVoucherModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		2E87E2DE013C7BB76A7CD211 /* Pods */ = {
@@ -271,6 +280,8 @@
 		B10131AD206A71F1000BDF3C /* Jsons */ = {
 			isa = PBXGroup;
 			children = (
+				2A11C45D206B6C72007615A0 /* voucherListFromServer.json */,
+				2A11C457206B3E3E007615A0 /* Config.json */,
 				2A11C451206B2FE0007615A0 /* loginResponse.json */,
 				B10131BE206A7F5C000BDF3C /* voucher.json */,
 				B10131BC206A7ED6000BDF3C /* login.json */,
@@ -323,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				B10131AD206A71F1000BDF3C /* Jsons */,
+				2A11C459206B41FB007615A0 /* Model */,
 				B10131D3206AA5DA000BDF3C /* QR Code */,
 				2A11C453206B35C3007615A0 /* UserDetails */,
 				2A0D192020695F6500C4DB98 /* Payment */,
@@ -331,7 +343,7 @@
 				2A00C00920653858005302D8 /* Constant */,
 				2A00BFFC2065254F005302D8 /* Coredata */,
 				2A00BFFB206523F8005302D8 /* Manager */,
-				2A00BFF7206521D9005302D8 /* Model */,
+				2A00BFF7206521D9005302D8 /* CoredataModel */,
 				B144B81F2053996F00354BEE /* HomeScreen */,
 				B144B81E2053995F00354BEE /* Login */,
 				B144B80220538E2000354BEE /* AppDelegate.h */,
@@ -359,7 +371,6 @@
 		B144B81F2053996F00354BEE /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				2A0D19242069F65B00C4DB98 /* Model */,
 				2A00C00F20655550005302D8 /* View */,
 				B144B81B2053994D00354BEE /* AISHomeViewController.h */,
 				B144B81C2053994D00354BEE /* AISHomeViewController.m */,
@@ -432,6 +443,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A11C452206B2FE1007615A0 /* loginResponse.json in Resources */,
+				2A11C458206B3E3E007615A0 /* Config.json in Resources */,
+				2A11C45E206B6C72007615A0 /* voucherListFromServer.json in Resources */,
 				2A00C0142065E6FD005302D8 /* joyce-huis-292442-unsplash.jpg in Resources */,
 				B144B81220538E2000354BEE /* LaunchScreen.storyboard in Resources */,
 				B10131BF206A7F5C000BDF3C /* voucher.json in Resources */,
@@ -505,6 +518,7 @@
 				2A00C00D20654A55005302D8 /* AISUIUtility.m in Sources */,
 				2A0D19232069D3A400C4DB98 /* AISContactUtility.m in Sources */,
 				2A0D1934206A634700C4DB98 /* AISSuccessfulPaymentPage.m in Sources */,
+				2A11C461206B7441007615A0 /* AISVoucherModel.m in Sources */,
 				B10131EA206AA614000BDF3C /* qrinput.c in Sources */,
 				2A11C456206B3600007615A0 /* AISUserViewController.m in Sources */,
 				2A00BFF520652159005302D8 /* AISUserDetails+CoreDataClass.m in Sources */,

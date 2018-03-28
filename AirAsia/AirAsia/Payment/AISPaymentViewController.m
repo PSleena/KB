@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Order Details";
-    self.paymentArr = @[@"Credit Card",@"Debit Card",@"Net banking",@"Wallet"];
+    self.paymentArr = @[@"Credit Card",@"Debit Card",@"Net banking",@"Wallet",@"Rewards"];
     [self setUpView];
 }
 
@@ -35,7 +35,7 @@
     [self.payNow addTarget:self action:@selector(goToSuccessfulPaymentPage) forControlEvents:UIControlEventTouchUpInside];
     self.paymentView.layer.borderWidth = 1;
     self.paymentView.layer.borderColor = [UIColor redColor].CGColor;
-    
+    self.price.text = self.voucher.price;
 }
 
 - (void)goToSuccessfulPaymentPage {
@@ -45,13 +45,10 @@
     NSString *filePath = [AISFilePathUtility newQRCodePath];
     [imageData writeToFile:filePath atomically:YES];
     
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:filePath forKey:@"filePath"];
-    self.voucherInfo = [dict copy];
+    self.voucher.qrCodePath = filePath;
     
-    //Insert voucher in to DB
     AISSuccessfulPaymentPage *con = [self.storyboard instantiateViewControllerWithIdentifier:@"AISSuccessfulPaymentPage"];
-    con.voucherInfo = self.voucherInfo;
+    con.voucher = self.voucher;
     [self.navigationController pushViewController:con animated:YES];
 }
 
@@ -77,11 +74,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-}
 
 
 @end

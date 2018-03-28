@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AISVoucherModel.h"
 
 @interface AISPaymentViewController : UIViewController
 
 @property (nonatomic)NSDictionary *voucherInfo;
+@property (nonatomic)AISVoucherModel *voucher;
 
 @end

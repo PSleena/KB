@@ -10,11 +10,16 @@
 #import "AISUserManager.h"
 #import "AISCardCell.h"
 #import "AISPaymentViewController.h"
+#import "AISUIUtility.h"
+#import "AISVoucherModel.h"
 
 @interface AISGiftCardViewController ()<UITextFieldDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (nonatomic,weak)IBOutlet UITextField *nameField;
 @property (nonatomic,weak)IBOutlet UITextField *amountField;
 @property (nonatomic,weak)IBOutlet UICollectionView *cardCollectionView;
+@property(nonatomic,strong)NSMutableArray *voucherarr;
+@property(nonatomic,strong)NSDictionary *selectedVoucher;
+
 @end
 
 @implementation AISGiftCardViewController
@@ -24,6 +29,8 @@
     
     [self setUpUI];
     [self setUpDatasource];
+    [self.cardCollectionView reloadData];
+
 }
 
 - (void)setUpUI {
@@ -45,12 +52,16 @@
     self.cardCollectionView.showsVerticalScrollIndicator = YES;
     self.cardCollectionView.backgroundColor = [UIColor clearColor];
     
-    [self.cardCollectionView reloadData];
 
 }
 
 - (void)setUpDatasource {
-    
+    NSDictionary *dic = [AISUIUtility dataFromJsonFileWithName:@"voucherListFromServer"];
+    self.voucherarr = [[NSMutableArray alloc] init];
+    NSArray *arr = dic[@"vouchers"];
+    for (NSDictionary *voucher in arr) {
+        [self.voucherarr addObject:voucher];
+    }
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -65,17 +76,19 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return self.voucherarr.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AISCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AISCardCell" forIndexPath:indexPath];
     cell.check.hidden = YES;
+    cell.price.hidden =YES;
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectedVoucher = [self.voucherarr objectAtIndex:indexPath.item];
     AISCardCell *cell = (AISCardCell*)[collectionView cellForItemAtIndexPath:indexPath];
     cell.check.hidden = NO;
 }
@@ -86,7 +99,26 @@
 }
 
 - (void)moveToPayment {
+    if (self.selectedVoucher == nil) {
+        [AISUIUtility showAlertWithMessage:@"Select card to proceed"];
+        return;
+    }
+    if (self.amountField.text.length == 0) {
+        [AISUIUtility showAlertWithMessage:@"Enter Amount"];
+        return;
+    }
+    
     AISPaymentViewController *con = [self.storyboard instantiateViewControllerWithIdentifier:@"AISPaymentViewController"];
+    AISVoucherModel *voucher = [[AISVoucherModel alloc] init];
+    voucher.voucherID = self.selectedVoucher[@"voucherID"];
+    voucher.category = self.selectedVoucher[@"category"];
+    voucher.type = self.selectedVoucher[@"type"];
+    voucher.expiryInterval = self.selectedVoucher[@"expiryInterval"];
+    voucher.imageURL = self.selectedVoucher[@"imageURL"];
+    voucher.message = self.selecteContact.message;
+    voucher.price = self.amountField.text;
+    con.voucher = voucher;
+    
     [self.navigationController pushViewController:con animated:YES];
 }
 
