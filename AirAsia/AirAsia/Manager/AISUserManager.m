@@ -29,9 +29,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self getuserDetailsWithCompletion:^(AISUserDetails *userDetail) {
-            self.user = userDetail;
-        }];
+        self.myVouchers = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -41,6 +39,7 @@
         completion(self.user);
     } else {
         [AISUserDetails getUserDetailsWithMoc:[AISCoreDataManager sharedManager].managedObjectContext withCompletion:^(AISUserDetails * _Nonnull userDetails) {
+            self.user = userDetails;
             completion(userDetails);
         }];
     }

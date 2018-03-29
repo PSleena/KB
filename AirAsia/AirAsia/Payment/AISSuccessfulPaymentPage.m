@@ -22,12 +22,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.navigationItem setHidesBackButton:YES animated:YES];
+
     self.orderView.layer.borderWidth = 1;
     self.orderView.layer.borderColor = [UIColor redColor].CGColor;
     [self.shareButton addTarget:self action:@selector(actionButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
+    UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithTitle:@"Home"
+                                                                style:UIBarButtonItemStylePlain target:self action:@selector(moveToHome)];
+    self.navigationItem.rightBarButtonItem = nextBtn;
+    
     self.price.text = self.voucher.price;
     
+}
+
+- (void)moveToHome {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

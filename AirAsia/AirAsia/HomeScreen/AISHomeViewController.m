@@ -16,7 +16,7 @@
 #import <ContactsUI/ContactsUI.h>
 #import "AISUserViewController.h"
 #import "NSData+Dictionary.h"
-#import "AISVoucherModel.h"
+#import "AISVoucher+CoreDataClass.h"
 #import "AISSuccessfulPaymentPage.h"
 #import "UIImage+MDQRCode.h"
 #import "AISFilePathUtility.h"
@@ -44,16 +44,47 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpUI];
+    [self loadMyCards];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadMyCards) name:@"ConfigComplete" object:nil];
     
-    NSDictionary *dic = [AISUIUtility dataFromJsonFileWithName:@"Config"];
-    self.voucherarr = [[NSMutableArray alloc] init];
-    NSArray *arr = dic[@"voucherDetails"];
-    for (NSDictionary *voucher in arr) {
-        AISVoucherModel *vObj = [[AISVoucherModel alloc]initWithInfo:voucher];
-        [self.voucherarr addObject:vObj];
-    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+#pragma mark - keyboard movements
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect f = self.view.frame;
+        f.origin.y = -keyboardSize.height;
+        self.view.frame = f;
+    }];
+}
+
+-(void)keyboardWillHide:(NSNotification *)notification
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect f = self.view.frame;
+        f.origin.y = 0.0f;
+        self.view.frame = f;
+    }];
+}
+
+- (void)loadMyCards {
+    self.voucherarr = [AISUserManager sharedInstance].myVouchers;
     [self.collectionView reloadData];
-    
 }
 
 - (void)setUpUI {
@@ -64,15 +95,20 @@
 
     AISUserDetails *user = [AISUserManager sharedInstance].user;
     if (user == nil) {
-        [[AISUserManager sharedInstance] getuserDetailsWithCompletion:^(AISUserDetails *userDetail) {
-            [self.userView updateViewWithName:[AISUserManager sharedInstance].user.username andAvatarPath:[AISUserManager sharedInstance].user.avatar];
-        }];
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+        dispatch_async(queue, ^{
+            [[AISUserManager sharedInstance] getuserDetailsWithCompletion:^(AISUserDetails *userDetail) {
+                NSLog(@"%@",userDetail.username);
+                [self.userView updateViewWithName:userDetail.username andAvatarPath:[AISUserManager sharedInstance].user.avatar];
+            }];
+        });
     }
     
     UITapGestureRecognizer *singleFingerTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(handleSingleTap:)];
     [self.userView addGestureRecognizer:singleFingerTap];
+    
     
     [AISUIUtility setPlaceHolderColor:self.contactTextField placeHoldertext:@"name/email/phone"];
     
@@ -126,10 +162,15 @@
     
     CNContactPickerViewController *contactPicker = [[CNContactPickerViewController alloc] init];
     contactPicker.delegate = self;
-    contactPicker.displayedPropertyKeys = @[CNContactGivenNameKey, CNContactImageDataAvailableKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactThumbnailImageDataKey, CNContactIdentifierKey];
+    contactPicker.displayedPropertyKeys = @[CNContactGivenNameKey, CNContactImageDataAvailableKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactThumbnailImageDataKey, CNContactIdentifierKey,CNContactEmailAddressesKey];
     contactPicker.predicateForEnablingContact = [NSPredicate predicateWithFormat:@"phoneNumbers.@count > 0"];
     contactPicker.predicateForSelectionOfContact = [NSPredicate predicateWithFormat:@"phoneNumbers.@count == 1"];
     contactPicker.predicateForSelectionOfProperty = [NSPredicate predicateWithFormat:@"key == 'phoneNumbers'"];
+    
+    contactPicker.predicateForEnablingContact = [NSPredicate predicateWithFormat:@"emailAddresses.@count > 0"];
+    contactPicker.predicateForSelectionOfContact = [NSPredicate predicateWithFormat:@"emailAddresses.@count == 1"];
+    contactPicker.predicateForSelectionOfProperty = [NSPredicate predicateWithFormat:@"key == 'emailAddresses'"];
+    
     [self presentViewController:contactPicker animated:YES completion:nil];
 }
 
@@ -164,21 +205,22 @@
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AISCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyOwnCards" forIndexPath:indexPath];
     cell.check.hidden = YES;
-    AISVoucherModel *voucher = [self.voucherarr objectAtIndex:indexPath.item];
+    AISVoucher *voucher = [self.voucherarr objectAtIndex:indexPath.item];
     cell.price.text = voucher.price;
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    AISSuccessfulPaymentPage *con = [self.storyboard instantiateViewControllerWithIdentifier:@"AISSuccessfulPaymentPage"];
     
     UIImage *qrCode = [UIImage mdQRCodeForString:@"Qrcode" size:400];
     NSData *imageData = UIImageJPEGRepresentation(qrCode, 1.0);
     NSString *filePath = [AISFilePathUtility newQRCodePath];
     [imageData writeToFile:filePath atomically:YES];
+    AISVoucher *voucher = [self.voucherarr objectAtIndex:indexPath.item];
+    voucher.qrCodePath = filePath;
     
-    con.voucher = [self.voucherarr objectAtIndex:indexPath.item];
-    con.voucher.qrCodePath = filePath;
+    AISSuccessfulPaymentPage *con = [self.storyboard instantiateViewControllerWithIdentifier:@"AISSuccessfulPaymentPage"];
+    con.voucher = voucher;
     [self.navigationController pushViewController:con animated:YES];
 }
 
@@ -221,6 +263,15 @@
     return YES;
 }
 
+- (BOOL)textView:(UITextView *)txtView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if( [text rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]].location == NSNotFound ) {
+        return YES;
+    }
+    
+    [txtView resignFirstResponder];
+    return NO;
+}
+
 //- (void)selectedContact:(AISContact *)contact {
 //    self.selectedContact = contact;
 //    self.contactTextField.text = contact.fullName;
@@ -253,15 +304,27 @@
     self.selectedContact = nil;
     self.selectedContact = [[AISContact alloc] init];
     
-    CNLabeledValue *emailValue = contactProperty.contact.emailAddresses.firstObject;
-    NSString *emailString = emailValue.value;
-    self.selectedContact.email = emailString;
+    CNContact *contact = contactProperty.contact;
+    NSString *phoneNumberString = nil;
+    if (contact.phoneNumbers) {
+        for (CNLabeledValue *label in contact.phoneNumbers) {
+            phoneNumberString = [label.value stringValue];
+            if ([phoneNumberString length] > 0) {
+                self.selectedContact.phone = phoneNumberString;
+            }
+        }
+    }
+    ////Get all E-Mail addresses from contacts
+    NSString *emailString = nil;
+    if (contact.emailAddresses) {
+        for (CNLabeledValue *label in contact.emailAddresses) {
+            emailString = label.value;
+            if ([emailString length] > 0) {
+                self.selectedContact.email = emailString;
+            }
+        }
+    }
     
-    CNLabeledValue *phoneNumberValue = contactProperty.contact.phoneNumbers.firstObject;
-    CNPhoneNumber *phoneNumber = phoneNumberValue.value;
-    NSString *phoneNumberString = phoneNumber.stringValue;
-    self.selectedContact.phone = phoneNumberString;
-
     NSString *name = contactProperty.contact.givenName;
     self.selectedContact.fullName = name;
     

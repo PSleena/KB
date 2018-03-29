@@ -13,6 +13,7 @@
 @interface AISUserManager : NSObject
 
 @property(nonatomic,strong)AISUserDetails *user;
+@property(nonatomic,strong)NSMutableArray *myVouchers;
 
 + (instancetype)sharedInstance;
 

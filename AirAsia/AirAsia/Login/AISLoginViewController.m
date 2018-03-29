@@ -12,6 +12,7 @@
 #import "AISUIUtility.h"
 #import "AISConstants.h"
 #import "NSData+Dictionary.h"
+#import "AppDelegate.h"
 
 @interface AISLoginViewController ()<UITextFieldDelegate>
 @property (nonatomic,weak)IBOutlet UITextField *username;
@@ -24,6 +25,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupValues];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+#pragma mark - keyboard movements
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect f = self.view.frame;
+        f.origin.y = -keyboardSize.height;
+        self.view.frame = f;
+    }];
+}
+
+-(void)keyboardWillHide:(NSNotification *)notification
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect f = self.view.frame;
+        f.origin.y = 0.0f;
+        self.view.frame = f;
+    }];
 }
 
 - (void)setupValues {
@@ -61,6 +95,8 @@
         [[AISCoreDataManager sharedManager] saveUserInfo:dic withCompletion:^(BOOL success) {
             if (success) {
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kUserDefaultuserLogin];
+                AppDelegate *delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+                [delegate fetchConfig];
                 [self goToHomeScreen];
             }
         }];

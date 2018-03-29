@@ -10,6 +10,9 @@
 #import "AISCoreDataManager.h"
 #import "AISConstants.h"
 #import "AISLoginViewController.h"
+#import "AISUIUtility.h"
+#import "AISVoucher+CoreDataClass.h"
+#import "AISUserManager.h"
 
 @interface AppDelegate ()
 
@@ -25,8 +28,30 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         AISLoginViewController *con = [storyboard instantiateViewControllerWithIdentifier:@"AISLoginViewController"];
         [self.window setRootViewController:con];
+    } else {
+        [self fetchConfig];
     }
+    
     return YES;
+}
+
+- (void)fetchConfig {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+    dispatch_async(queue, ^{
+        NSDictionary *dic = [AISUIUtility dataFromJsonFileWithName:@"Config"];
+        NSArray *arr = dic[@"voucherDetails"];
+        for (NSDictionary *voucher in arr) {
+          [AISVoucher insertOrUpdateVoucherWithID:voucher[@"voucherID"]
+                                         withInfo:voucher
+                                              moc:[AISCoreDataManager sharedManager].managedObjectContext
+                                   withCompletion:^(AISVoucher * _Nonnull voucher) {
+                                       [[[AISUserManager sharedInstance] myVouchers] addObject:voucher];
+                                       if (arr.count == [[AISUserManager sharedInstance] myVouchers].count) {
+                                         [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigComplete" object:nil];
+                                       }
+                                   }];
+        }
+    });
 }
 
 

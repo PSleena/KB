@@ -11,6 +11,8 @@
 #import "AISFilePathUtility.h"
 #import "AirAsia-Bridging-Header.h"
 #import "UIImage+MDQRCode.h"
+#import "AISVoucher+CoreDataClass.h"
+#import "AISCoreDataManager.h"
 
 @interface AISPaymentViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,weak)IBOutlet UITableView *tableView;
@@ -35,7 +37,7 @@
     [self.payNow addTarget:self action:@selector(goToSuccessfulPaymentPage) forControlEvents:UIControlEventTouchUpInside];
     self.paymentView.layer.borderWidth = 1;
     self.paymentView.layer.borderColor = [UIColor redColor].CGColor;
-    self.price.text = self.voucher.price;
+    self.price.text = self.voucherInfo[@"price"];
 }
 
 - (void)goToSuccessfulPaymentPage {
@@ -45,11 +47,19 @@
     NSString *filePath = [AISFilePathUtility newQRCodePath];
     [imageData writeToFile:filePath atomically:YES];
     
-    self.voucher.qrCodePath = filePath;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict addEntriesFromDictionary:self.voucherInfo];
+    [dict setValue:filePath forKey:@"qrCodePath"];
     
-    AISSuccessfulPaymentPage *con = [self.storyboard instantiateViewControllerWithIdentifier:@"AISSuccessfulPaymentPage"];
-    con.voucher = self.voucher;
-    [self.navigationController pushViewController:con animated:YES];
+    [AISVoucher insertOrUpdateVoucherWithID:dict[@"voucherID"]
+                                   withInfo:dict
+                                        moc:[[AISCoreDataManager sharedManager]managedObjectContext]
+                             withCompletion:^(AISVoucher * _Nonnull voucher) {
+                                     AISSuccessfulPaymentPage *con = [self.storyboard instantiateViewControllerWithIdentifier:@"AISSuccessfulPaymentPage"];
+                                     con.voucher = voucher;
+                                     [self.navigationController pushViewController:con animated:YES];
+                             }];
+    
 }
 
 #pragma mark - Table view data source

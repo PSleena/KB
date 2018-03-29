@@ -24,6 +24,7 @@
         user.username = username;
         user.email = email;
         user.phoneNumber = phoneNum;
+        user.fullName = fullname;
         NSError *error;
         if (![moc save:&error]) {
             NSLog(@"Failed to save - error: %@", [error localizedDescription]);

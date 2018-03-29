@@ -19,6 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
                                 moc:(NSManagedObjectContext*)moc
                        withCompletion:(void (^)(AISVoucher *voucher))completion;
 
++ (void)deleteVoucherWithID:(NSString *)voucherID
+                                moc:(NSManagedObjectContext*)moc
+                     withCompletion:(void (^)(BOOL success))completion;
+
 @end
 
 NS_ASSUME_NONNULL_END

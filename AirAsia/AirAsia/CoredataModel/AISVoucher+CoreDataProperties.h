@@ -23,6 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *email;
 @property (nullable, nonatomic, copy) NSString *createdDate;
 @property (nullable, nonatomic, copy) NSString *expiryInterval;
+@property (nullable, nonatomic, copy) NSString *message;
+@property (nullable, nonatomic, copy) NSString *category;
+@property (nullable, nonatomic, copy) NSString *type;
+@property (nullable, nonatomic, copy) NSString *price;
+@property (nullable, nonatomic, copy) NSString *imageURL;
 
 @end
 

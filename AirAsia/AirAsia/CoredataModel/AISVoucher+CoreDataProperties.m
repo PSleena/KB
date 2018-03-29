@@ -22,5 +22,9 @@
 @dynamic email;
 @dynamic createdDate;
 @dynamic expiryInterval;
-
+@dynamic message;
+@dynamic price;
+@dynamic category;
+@dynamic type;
+@dynamic imageURL;
 @end

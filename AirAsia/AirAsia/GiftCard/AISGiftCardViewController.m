@@ -11,7 +11,7 @@
 #import "AISCardCell.h"
 #import "AISPaymentViewController.h"
 #import "AISUIUtility.h"
-#import "AISVoucherModel.h"
+#import "AISVoucher+CoreDataClass.h"
 
 @interface AISGiftCardViewController ()<UITextFieldDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (nonatomic,weak)IBOutlet UITextField *nameField;
@@ -109,17 +109,18 @@
     }
     
     AISPaymentViewController *con = [self.storyboard instantiateViewControllerWithIdentifier:@"AISPaymentViewController"];
-    AISVoucherModel *voucher = [[AISVoucherModel alloc] init];
-    voucher.voucherID = self.selectedVoucher[@"voucherID"];
-    voucher.category = self.selectedVoucher[@"category"];
-    voucher.type = self.selectedVoucher[@"type"];
-    voucher.expiryInterval = self.selectedVoucher[@"expiryInterval"];
-    voucher.imageURL = self.selectedVoucher[@"imageURL"];
-    voucher.message = self.selecteContact.message;
-    voucher.price = self.amountField.text;
-    con.voucher = voucher;
-    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict addEntriesFromDictionary:self.selectedVoucher];
+    [dict setValue:self.amountField.text forKey:@"price"];
+    con.voucherInfo = dict;
     [self.navigationController pushViewController:con animated:YES];
+}
+
+#pragma mark - TextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {

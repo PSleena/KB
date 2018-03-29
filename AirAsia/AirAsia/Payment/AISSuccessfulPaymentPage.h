@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AISVoucherModel.h"
+#import "AISVoucher+CoreDataClass.h"
 
 @interface AISSuccessfulPaymentPage : UIViewController
 
-@property (nonatomic)AISVoucherModel *voucher;
+@property (nonatomic)AISVoucher *voucher;
 @end
