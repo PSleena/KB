@@ -44,7 +44,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpUI];
-    [self loadMyCards];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadMyCards) name:@"ConfigComplete" object:nil];
     
 }
@@ -53,6 +52,7 @@
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [self loadMyCards];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

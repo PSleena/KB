@@ -13,6 +13,7 @@
 #import "UIImage+MDQRCode.h"
 #import "AISVoucher+CoreDataClass.h"
 #import "AISCoreDataManager.h"
+#import "AISUserManager.h"
 
 @interface AISPaymentViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,weak)IBOutlet UITableView *tableView;
@@ -42,6 +43,7 @@
 
 - (void)goToSuccessfulPaymentPage {
     //get voucherID and QR code details from server.
+   
     UIImage *qrCode = [UIImage mdQRCodeForString:@"Qrcode" size:400];
     NSData *imageData = UIImageJPEGRepresentation(qrCode, 1.0);
     NSString *filePath = [AISFilePathUtility newQRCodePath];
@@ -55,6 +57,8 @@
                                    withInfo:dict
                                         moc:[[AISCoreDataManager sharedManager]managedObjectContext]
                              withCompletion:^(AISVoucher * _Nonnull voucher) {
+                                 //if payment successful
+                                 [[[AISUserManager sharedInstance] myVouchers] addObject:voucher];
                                      AISSuccessfulPaymentPage *con = [self.storyboard instantiateViewControllerWithIdentifier:@"AISSuccessfulPaymentPage"];
                                      con.voucher = voucher;
                                      [self.navigationController pushViewController:con animated:YES];

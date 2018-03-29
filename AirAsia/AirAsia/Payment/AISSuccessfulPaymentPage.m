@@ -7,6 +7,8 @@
 //
 
 #import "AISSuccessfulPaymentPage.h"
+#import "AISCoreDataManager.h"
+#import "AISUserManager.h"
 
 @interface AISSuccessfulPaymentPage ()
 @property(nonatomic,weak)IBOutlet UIView *orderView;
@@ -50,7 +52,40 @@
     UIImage *image = [UIImage imageWithContentsOfFile:filePath];
     NSArray *items = @[image];
     UIActivityViewController *controller = [[UIActivityViewController alloc]initWithActivityItems:items applicationActivities:nil];
-    [self presentViewController:controller animated:YES completion:^{
+    
+    [self presentViewController:controller animated:YES completion:nil];
+    
+//    [AISVoucher deleteVoucherWithID:self.voucher.voucherID moc:[[AISCoreDataManager sharedManager] managedObjectContext] withCompletion:^(BOOL success) {
+//        if (success) {
+//            [[[AISUserManager sharedInstance] myVouchers] removeObject:self.voucher];
+//        }
+//    }];
+    
+    [controller setCompletionWithItemsHandler:^(UIActivityType  _Nullable activityType,
+                                                BOOL completed,
+                                                NSArray * _Nullable returnedItems,
+                                                NSError * _Nullable activityError) {
+        
+        NSString *ServiceMsg = nil;
+        if ( [activityType isEqualToString:UIActivityTypeMail] )           ServiceMsg = @"Mail sent";
+        if ( [activityType isEqualToString:UIActivityTypePostToTwitter] )  ServiceMsg = @"Post on twitter";
+        if ( [activityType isEqualToString:UIActivityTypePostToFacebook] ) ServiceMsg = @"Post on facebook";
+        if (ServiceMsg == nil) {
+            ServiceMsg = [NSString stringWithFormat:@"Shared with %@",self.voucher.name];
+        }
+        
+        if ( completed )
+        {
+            [AISVoucher deleteVoucherWithID:self.voucher.voucherID moc:[[AISCoreDataManager sharedManager] managedObjectContext] withCompletion:^(BOOL success) {
+                if (success) {
+                    [[[AISUserManager sharedInstance] myVouchers] removeObject:self.voucher];
+                }
+            }];
+        }
+        else
+        {
+            // didn't succeed.
+        }
     }];
     
 }
