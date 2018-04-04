@@ -36,6 +36,10 @@
     
     self.price.text = self.voucher.price;
     
+    NSString *filePath = self.voucher.qrCodePath;
+    UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+    self.barCodeImage.image = image;
+    
 }
 
 - (void)moveToHome {
@@ -55,12 +59,6 @@
     
     [self presentViewController:controller animated:YES completion:nil];
     
-//    [AISVoucher deleteVoucherWithID:self.voucher.voucherID moc:[[AISCoreDataManager sharedManager] managedObjectContext] withCompletion:^(BOOL success) {
-//        if (success) {
-//            [[[AISUserManager sharedInstance] myVouchers] removeObject:self.voucher];
-//        }
-//    }];
-    
     [controller setCompletionWithItemsHandler:^(UIActivityType  _Nullable activityType,
                                                 BOOL completed,
                                                 NSArray * _Nullable returnedItems,
@@ -79,6 +77,7 @@
             [AISVoucher deleteVoucherWithID:self.voucher.voucherID moc:[[AISCoreDataManager sharedManager] managedObjectContext] withCompletion:^(BOOL success) {
                 if (success) {
                     [[[AISUserManager sharedInstance] myVouchers] removeObject:self.voucher];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
                 }
             }];
         }

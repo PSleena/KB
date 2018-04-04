@@ -112,6 +112,9 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict addEntriesFromDictionary:self.selectedVoucher];
     [dict setValue:self.amountField.text forKey:@"price"];
+    [dict setValue:self.selecteContact.fullName forKey:@"name"];
+    [dict setValue:self.selecteContact.phone forKey:@"phone"];
+    [dict setValue:self.selecteContact.message forKey:@"message"];
     con.voucherInfo = dict;
     [self.navigationController pushViewController:con animated:YES];
 }

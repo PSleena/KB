@@ -36,8 +36,7 @@
 }
 
 - (void)fetchConfig {
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
-    dispatch_async(queue, ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSDictionary *dic = [AISUIUtility dataFromJsonFileWithName:@"Config"];
         NSArray *arr = dic[@"voucherDetails"];
         for (NSDictionary *voucher in arr) {
@@ -47,7 +46,9 @@
                                    withCompletion:^(AISVoucher * _Nonnull voucher) {
                                        [[[AISUserManager sharedInstance] myVouchers] addObject:voucher];
                                        if (arr.count == [[AISUserManager sharedInstance] myVouchers].count) {
-                                         [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigComplete" object:nil];
+                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                               [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigComplete" object:nil];
+                                           });
                                        }
                                    }];
         }

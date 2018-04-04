@@ -14,4 +14,5 @@
 + (void)showAlertWithMessage:(NSString *)message;
 + (void)setPlaceHolderColor:(UITextField *)textField placeHoldertext:(NSString *)text;
 + (NSDictionary *)dataFromJsonFileWithName:(NSString *)name;
++ (NSString *)stringFromDictionary:(NSDictionary *)dic;
 @end

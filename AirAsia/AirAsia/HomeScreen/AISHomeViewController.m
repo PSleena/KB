@@ -212,12 +212,22 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UIImage *qrCode = [UIImage mdQRCodeForString:@"Qrcode" size:400];
+    AISVoucher *voucher = [self.voucherarr objectAtIndex:indexPath.item];
+    
+    NSDictionary *dic = @{@"price" : voucher.price,
+                          @"name" : voucher.name,
+                          @"message" : voucher.message,
+                          @"phone" : voucher.phone,
+                          };
+    
+    NSString *str = [AISUIUtility stringFromDictionary:dic];
+    UIImage *qrCode = [UIImage mdQRCodeForString:str size:400];
     NSData *imageData = UIImageJPEGRepresentation(qrCode, 1.0);
     NSString *filePath = [AISFilePathUtility newQRCodePath];
     [imageData writeToFile:filePath atomically:YES];
-    AISVoucher *voucher = [self.voucherarr objectAtIndex:indexPath.item];
+    
     voucher.qrCodePath = filePath;
+
     
     AISSuccessfulPaymentPage *con = [self.storyboard instantiateViewControllerWithIdentifier:@"AISSuccessfulPaymentPage"];
     con.voucher = voucher;
@@ -249,8 +259,9 @@
         if(self.selectedContact == nil){
             self.selectedContact = [[AISContact alloc] init];
         }
-        self.selectedContact.message = textView.text;
     }
+    
+    self.selectedContact.message = textView.text;
 }
 
 - (BOOL) textViewShouldEndEditing:(UITextView *)textView

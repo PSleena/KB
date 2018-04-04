@@ -14,6 +14,7 @@
 #import "AISVoucher+CoreDataClass.h"
 #import "AISCoreDataManager.h"
 #import "AISUserManager.h"
+#import "AISUIUtility.h"
 
 @interface AISPaymentViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,weak)IBOutlet UITableView *tableView;
@@ -44,7 +45,14 @@
 - (void)goToSuccessfulPaymentPage {
     //get voucherID and QR code details from server.
    
-    UIImage *qrCode = [UIImage mdQRCodeForString:@"Qrcode" size:400];
+    NSDictionary *dic = @{@"price" : self.voucherInfo[@"price"],
+                          @"name" : self.voucherInfo[@"name"],
+                          @"message" : self.voucherInfo[@"message"],
+                          @"phone" : self.voucherInfo[@"phone"],
+                          };
+
+    NSString *str = [AISUIUtility stringFromDictionary:dic];
+    UIImage *qrCode = [UIImage mdQRCodeForString:str size:400];
     NSData *imageData = UIImageJPEGRepresentation(qrCode, 1.0);
     NSString *filePath = [AISFilePathUtility newQRCodePath];
     [imageData writeToFile:filePath atomically:YES];

@@ -41,5 +41,13 @@
     return [data aa_Dictionary];
 }
 
++ (NSString *)stringFromDictionary:(NSDictionary *)dic {
+    NSError * err;
+    NSData * jsonData = [NSJSONSerialization  dataWithJSONObject:dic options:0 error:&err];
+    NSString * string = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",string);
+    return string;
+}
+
 
 @end

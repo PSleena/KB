@@ -51,7 +51,7 @@
                                     <color key="titleColor" red="0.78006027919999998" green="0.1311763165" blue="0.11174628" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="Login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="opy-dh-7EA"/>
+                                    <action selector="Login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="biX-aP-SOa"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWs-Rm-VQh">
@@ -91,7 +91,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="loginButton" destination="6Rm-ce-pde" id="0q9-zD-zwR"/>
+                        <outlet property="loginButton" destination="6Rm-ce-pde" id="UlZ-if-vVl"/>
                         <outlet property="password" destination="O2D-Vq-chB" id="q6e-jO-BvR"/>
                         <outlet property="username" destination="c0R-eC-pNU" id="Adu-3f-Zuh"/>
                     </connections>
